@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 384" width="840" height="384" role="img" aria-labelledby="title desc">
+  <title id="title">People, Process, Technology</title>
+  <desc id="desc">Three pillars for Evolutionary Thinking Machines: People, Process, and Technology, with evolution captions under each.</desc>
+
+  <defs>
+    <style type="text/css"><![CDATA[
+      @font-face {
+        font-family: "EB Garamond";
+        font-style: normal;
+        font-weight: 400 700;
+        src: url("/workspace/etm-visual/fonts/eb-garamond-latin.ttf") format("truetype");
+      }
+    ]]></style>
+  </defs>
+
+  <rect width="840" height="384" fill="#07060E"/>
+
+  <!-- People -->
+  <text x="240" y="46" text-anchor="start"
+        font-family="EB Garamond"
+        font-size="22" font-weight="700"
+        fill="#F4F1EA">People</text>
+
+  <rect x="240" y="58" width="360" height="96" rx="0"
+        fill="#12101A" stroke="rgba(244,241,234,0.14)" stroke-width="1"/>
+  <rect x="240" y="58" width="360" height="1" fill="rgba(244,241,234,0.28)"/>
+
+  <g font-family="EB Garamond"
+     font-size="17" font-weight="400" fill="#F4F1EA" text-anchor="middle">
+    <text x="420" y="89.5">Ownership, Empowerment, and Accountability</text>
+    <text x="420" y="107.5">Effective Communication and Motivation</text>
+    <text x="420" y="125.5">Triangulation and Alignment</text>
+  </g>
+
+  <text x="420" y="174" text-anchor="middle"
+        font-family="EB Garamond"
+        font-size="18" font-weight="400" font-style="italic" fill="#C4BECC">Organizational Evolution</text>
+
+  <!-- Process: gap after People box bottom 154 is 105 → box at 259 -->
+  <text x="30" y="245" text-anchor="start"
+        font-family="EB Garamond"
+        font-size="22" font-weight="700"
+        fill="#F4F1EA">Process</text>
+
+  <rect x="30" y="259" width="360" height="96" rx="0"
+        fill="#12101A" stroke="rgba(244,241,234,0.14)" stroke-width="1"/>
+  <rect x="30" y="259" width="360" height="1" fill="rgba(244,241,234,0.28)"/>
+
+  <g font-family="EB Garamond"
+     font-size="17" font-weight="400" fill="#F4F1EA" text-anchor="middle">
+    <text x="210" y="290.5">Alignment of Goals and Execution</text>
+    <text x="210" y="308.5">Insight Accumulation and Distribution</text>
+    <text x="210" y="326.5">Measurement and Analysis of Outcomes</text>
+  </g>
+
+  <text x="210" y="375" text-anchor="middle"
+        font-family="EB Garamond"
+        font-size="18" font-weight="400" font-style="italic" fill="#C4BECC">Business Evolution</text>
+
+  <!-- Technology -->
+  <text x="450" y="245" text-anchor="start"
+        font-family="EB Garamond"
+        font-size="22" font-weight="700"
+        fill="#F4F1EA">Technology</text>
+
+  <rect x="450" y="259" width="360" height="96" rx="0"
+        fill="#12101A" stroke="rgba(244,241,234,0.14)" stroke-width="1"/>
+  <rect x="450" y="259" width="360" height="1" fill="rgba(244,241,234,0.28)"/>
+
+  <g font-family="EB Garamond"
+     font-size="17" font-weight="400" fill="#F4F1EA" text-anchor="middle">
+    <text x="630" y="290.5">CRM, ERP, HCM, ITSM, &amp; CDP Integration</text>
+    <text x="630" y="308.5">Identity, Entitlement, and Information Security</text>
+    <text x="630" y="326.5">AI Governance and Orchestration</text>
+  </g>
+
+  <text x="630" y="375" text-anchor="middle"
+        font-family="EB Garamond"
+        font-size="18" font-weight="400" font-style="italic" fill="#C4BECC">Information Evolution</text>
+</svg>

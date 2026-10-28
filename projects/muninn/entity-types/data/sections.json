@@ -1,0 +1,2008 @@
+{
+ "parts": [
+  {
+   "id": "foundations",
+   "title": "Foundations",
+   "sections": [
+    "schema",
+    "people",
+    "roles"
+   ]
+  },
+  {
+   "id": "intent",
+   "title": "Intent and execution",
+   "sections": [
+    "direction",
+    "goals",
+    "execution",
+    "risks",
+    "governance",
+    "machine"
+   ]
+  },
+  {
+   "id": "work",
+   "title": "Processes and decisions",
+   "sections": [
+    "processes",
+    "decisions",
+    "reasoning"
+   ]
+  },
+  {
+   "id": "agents",
+   "title": "Agents, knowledge and evidence",
+   "sections": [
+    "agents",
+    "knowledge",
+    "causal",
+    "evaluation"
+   ]
+  },
+  {
+   "id": "domains",
+   "title": "Domain packs",
+   "sections": [
+    "gtm",
+    "swe"
+   ]
+  }
+ ],
+ "sections": [
+  {
+   "id": "schema",
+   "number": 1,
+   "title": "The schema layer",
+   "part": "Foundations",
+   "intro": [
+    "These seven types describe the registry itself. Entity Type is the list of all types, including any a customer adds. Taxonomies arrange types into hierarchies, ontologies define how concepts relate, and Data Mapping turns abstract types into physical tables and fields. They live in Muninn's LinkML schema rather than as ordinary records.",
+    "Taxonomy Map and Ontology Map are how Muninn meets a customer's existing vocabulary. They record which of the customer's terms are synonyms of built-in types, and where two terms overlap only partly. State Model gives each type its lifecycle, and checklists, approvals and policies decide when a record may move from one state to the next."
+   ],
+   "introduced_here": [
+    "ENTITY-TYPE",
+    "TAXONOMY",
+    "TAXONOMY-MAP",
+    "ONTOLOGY",
+    "ONTOLOGY-MAP",
+    "DDL",
+    "ORG-STRUCTURE",
+    "MODEL-STATE"
+   ],
+   "also_shown": [
+    "ORGANIZATION",
+    "CHECKLIST",
+    "APPROVAL",
+    "POLICY"
+   ],
+   "relationships": [
+    {
+     "source": "ORG-STRUCTURE",
+     "label": "is a kind of",
+     "target": "ONTOLOGY",
+     "kind": "sub"
+    },
+    {
+     "source": "TAXONOMY",
+     "label": "classifies",
+     "target": "ENTITY-TYPE",
+     "kind": "rel"
+    },
+    {
+     "source": "TAXONOMY-MAP",
+     "label": "maps synonyms across",
+     "target": "TAXONOMY",
+     "kind": "rel"
+    },
+    {
+     "source": "ONTOLOGY",
+     "label": "relates concepts of",
+     "target": "ENTITY-TYPE",
+     "kind": "rel"
+    },
+    {
+     "source": "ONTOLOGY-MAP",
+     "label": "aligns",
+     "target": "ONTOLOGY",
+     "kind": "rel"
+    },
+    {
+     "source": "ORG-STRUCTURE",
+     "label": "models containment of",
+     "target": "ORGANIZATION",
+     "kind": "rel"
+    },
+    {
+     "source": "DDL",
+     "label": "maps to tables and fields",
+     "target": "ENTITY-TYPE",
+     "kind": "rel"
+    },
+    {
+     "source": "MODEL-STATE",
+     "label": "sets lifecycle of",
+     "target": "ENTITY-TYPE",
+     "kind": "rel"
+    },
+    {
+     "source": "CHECKLIST",
+     "label": "gates transitions in",
+     "target": "MODEL-STATE",
+     "kind": "rel"
+    },
+    {
+     "source": "APPROVAL",
+     "label": "gates transitions in",
+     "target": "MODEL-STATE",
+     "kind": "rel"
+    },
+    {
+     "source": "POLICY",
+     "label": "constrains transitions in",
+     "target": "MODEL-STATE",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/01-the-schema-layer.svg",
+   "diagram_png": "diagrams/png/01-the-schema-layer.png"
+  },
+  {
+   "id": "people",
+   "number": 2,
+   "title": "People and organizations",
+   "part": "Foundations",
+   "intro": [
+    "Person and Organization are the two roots for the actors an organization deals with. Employee, Contractor and Consultant describe how a person is engaged. Contact is a person at an external organization, linked to the accounts, partners and vendors they work for.",
+    "Organization covers any structured group of people, from a company down to a team. Company is the legal entity and the parent of Vendor, Partner and Competitor. Subsidiary, Division and Department model ownership and containment, and Organization Structure, from the schema layer, records which unit contains which and who reports to whom."
+   ],
+   "introduced_here": [
+    "PERSON",
+    "EMPLOYEE",
+    "CONTRACTOR",
+    "CONSULTANT",
+    "CONTACT",
+    "ORGANIZATION",
+    "ACCOUNT",
+    "COMPANY",
+    "SUBSIDIARY",
+    "DIVISION",
+    "DEPARTMENT",
+    "TEAM",
+    "VENDOR",
+    "PARTNER",
+    "COMPETITOR"
+   ],
+   "also_shown": [
+    "ORG-STRUCTURE"
+   ],
+   "relationships": [
+    {
+     "source": "EMPLOYEE",
+     "label": "is a kind of",
+     "target": "PERSON",
+     "kind": "sub"
+    },
+    {
+     "source": "CONTRACTOR",
+     "label": "is a kind of",
+     "target": "PERSON",
+     "kind": "sub"
+    },
+    {
+     "source": "CONSULTANT",
+     "label": "is a kind of",
+     "target": "PERSON",
+     "kind": "sub"
+    },
+    {
+     "source": "CONTACT",
+     "label": "is a kind of",
+     "target": "PERSON",
+     "kind": "sub"
+    },
+    {
+     "source": "ACCOUNT",
+     "label": "is a kind of",
+     "target": "ORGANIZATION",
+     "kind": "sub"
+    },
+    {
+     "source": "COMPANY",
+     "label": "is a kind of",
+     "target": "ORGANIZATION",
+     "kind": "sub"
+    },
+    {
+     "source": "SUBSIDIARY",
+     "label": "is a kind of",
+     "target": "ORGANIZATION",
+     "kind": "sub"
+    },
+    {
+     "source": "DIVISION",
+     "label": "is a kind of",
+     "target": "ORGANIZATION",
+     "kind": "sub"
+    },
+    {
+     "source": "DEPARTMENT",
+     "label": "is a kind of",
+     "target": "ORGANIZATION",
+     "kind": "sub"
+    },
+    {
+     "source": "TEAM",
+     "label": "is a kind of",
+     "target": "ORGANIZATION",
+     "kind": "sub"
+    },
+    {
+     "source": "VENDOR",
+     "label": "is a kind of",
+     "target": "COMPANY",
+     "kind": "sub"
+    },
+    {
+     "source": "PARTNER",
+     "label": "is a kind of",
+     "target": "COMPANY",
+     "kind": "sub"
+    },
+    {
+     "source": "COMPETITOR",
+     "label": "is a kind of",
+     "target": "COMPANY",
+     "kind": "sub"
+    },
+    {
+     "source": "PERSON",
+     "label": "member of",
+     "target": "ORGANIZATION",
+     "kind": "rel"
+    },
+    {
+     "source": "CONTACT",
+     "label": "works at",
+     "target": "ACCOUNT",
+     "kind": "rel"
+    },
+    {
+     "source": "SUBSIDIARY",
+     "label": "owned by",
+     "target": "COMPANY",
+     "kind": "rel"
+    },
+    {
+     "source": "DIVISION",
+     "label": "unit within",
+     "target": "COMPANY",
+     "kind": "rel"
+    },
+    {
+     "source": "DEPARTMENT",
+     "label": "unit within",
+     "target": "DIVISION",
+     "kind": "rel"
+    },
+    {
+     "source": "ORG-STRUCTURE",
+     "label": "models containment of",
+     "target": "ORGANIZATION",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/02-people-and-organizations.svg",
+   "diagram_png": "diagrams/png/02-people-and-organizations.png"
+  },
+  {
+   "id": "roles",
+   "number": 3,
+   "title": "Roles, accountability and authority",
+   "part": "Foundations",
+   "intro": [
+    "A Role is a named set of responsibilities and authority, kept separate from whoever holds it. Accountable Owner, Supervisor, Hiring Manager and Board Member are roles, not kinds of person, because one person can hold all four for different scopes and periods. A Role Assignment records who holds a role, for what scope and for how long, including RACI assignments.",
+    "AI agents can hold roles too, through the same assignments, and each agent has a human sponsor. An Accountable Owner should remain a human. Decision Rights state which decisions a role may make or approve and up to what limit, so approvals and escalations reach the right person."
+   ],
+   "introduced_here": [
+    "ROLE",
+    "ROLE-ASSIGNMENT",
+    "ACCOUNTABLE-OWNER",
+    "SUPERVISOR",
+    "HIRING-MANAGER",
+    "BOARD-MEMBER",
+    "DECISION-RIGHT"
+   ],
+   "also_shown": [
+    "PERSON",
+    "AI-AGENT",
+    "APPROVAL",
+    "ESCALATION",
+    "GOAL"
+   ],
+   "relationships": [
+    {
+     "source": "ACCOUNTABLE-OWNER",
+     "label": "is a kind of",
+     "target": "ROLE",
+     "kind": "sub"
+    },
+    {
+     "source": "SUPERVISOR",
+     "label": "is a kind of",
+     "target": "ROLE",
+     "kind": "sub"
+    },
+    {
+     "source": "HIRING-MANAGER",
+     "label": "is a kind of",
+     "target": "ROLE",
+     "kind": "sub"
+    },
+    {
+     "source": "BOARD-MEMBER",
+     "label": "is a kind of",
+     "target": "ROLE",
+     "kind": "sub"
+    },
+    {
+     "source": "ROLE-ASSIGNMENT",
+     "label": "assigns",
+     "target": "ROLE",
+     "kind": "rel"
+    },
+    {
+     "source": "ROLE-ASSIGNMENT",
+     "label": "held by",
+     "target": "PERSON",
+     "kind": "rel"
+    },
+    {
+     "source": "ROLE-ASSIGNMENT",
+     "label": "held by",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "AI-AGENT",
+     "label": "sponsored by",
+     "target": "PERSON",
+     "kind": "rel"
+    },
+    {
+     "source": "ROLE",
+     "label": "carries",
+     "target": "DECISION-RIGHT",
+     "kind": "rel"
+    },
+    {
+     "source": "APPROVAL",
+     "label": "exercises",
+     "target": "DECISION-RIGHT",
+     "kind": "rel"
+    },
+    {
+     "source": "ESCALATION",
+     "label": "routed to",
+     "target": "ACCOUNTABLE-OWNER",
+     "kind": "rel"
+    },
+    {
+     "source": "ACCOUNTABLE-OWNER",
+     "label": "answerable for",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "SUPERVISOR",
+     "label": "oversees work of",
+     "target": "PERSON",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/03-roles-accountability-and-authority.svg",
+   "diagram_png": "diagrams/png/03-roles-accountability-and-authority.png"
+  },
+  {
+   "id": "direction",
+   "number": 4,
+   "title": "Purpose, strategy and plans",
+   "part": "Intent and execution",
+   "intro": [
+    "This is the top of the alignment hierarchy that Concordia checks against. Mission is the enduring purpose and Vision is the future state. Principles, both cultural and ethical, guide choices where no rule applies. A Strategy is the chosen approach to one or more goals, and a Plan turns that strategy into scheduled, resourced work.",
+    "A Roadmap is a plan sequenced over time, and it ties customer commitments to planned dates. Programs carry out plans. Budgets tie money and resources to programs, so Concordia can find work without funding or funding without a goal. Time Periods give goals, budgets and metrics a shared calendar."
+   ],
+   "introduced_here": [
+    "MISSION",
+    "VISION",
+    "PRINCIPLE",
+    "CULTURAL-PRINCIPLE",
+    "ETHICAL-PRINCIPLE",
+    "STRATEGY",
+    "PLAN",
+    "ROADMAP",
+    "BUDGET",
+    "TIME-PERIOD"
+   ],
+   "also_shown": [
+    "GOAL",
+    "PROGRAM",
+    "COMMITMENT",
+    "DECISION"
+   ],
+   "relationships": [
+    {
+     "source": "CULTURAL-PRINCIPLE",
+     "label": "is a kind of",
+     "target": "PRINCIPLE",
+     "kind": "sub"
+    },
+    {
+     "source": "ETHICAL-PRINCIPLE",
+     "label": "is a kind of",
+     "target": "PRINCIPLE",
+     "kind": "sub"
+    },
+    {
+     "source": "ROADMAP",
+     "label": "is a kind of",
+     "target": "PLAN",
+     "kind": "sub"
+    },
+    {
+     "source": "MISSION",
+     "label": "tests fit of",
+     "target": "STRATEGY",
+     "kind": "rel"
+    },
+    {
+     "source": "VISION",
+     "label": "sets direction for",
+     "target": "STRATEGY",
+     "kind": "rel"
+    },
+    {
+     "source": "VISION",
+     "label": "frames",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "STRATEGY",
+     "label": "pursues",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "STRATEGY",
+     "label": "carried out by",
+     "target": "PLAN",
+     "kind": "rel"
+    },
+    {
+     "source": "PLAN",
+     "label": "executed by",
+     "target": "PROGRAM",
+     "kind": "rel"
+    },
+    {
+     "source": "BUDGET",
+     "label": "allocated to",
+     "target": "PROGRAM",
+     "kind": "rel"
+    },
+    {
+     "source": "TIME-PERIOD",
+     "label": "calendar for",
+     "target": "BUDGET",
+     "kind": "rel"
+    },
+    {
+     "source": "ROADMAP",
+     "label": "dates",
+     "target": "COMMITMENT",
+     "kind": "rel"
+    },
+    {
+     "source": "PRINCIPLE",
+     "label": "guides",
+     "target": "DECISION",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/04-purpose-strategy-and-plans.svg",
+   "diagram_png": "diagrams/png/04-purpose-strategy-and-plans.png"
+  },
+  {
+   "id": "goals",
+   "number": 5,
+   "title": "Goals and measures of progress",
+   "part": "Intent and execution",
+   "intro": [
+    "Goals are the results an organization intends to achieve. SMART Project Goals are specific and time-bound, Operational Goals set targets for steady-state running, and Objectives pair a qualitative goal with key results for OKR planning.",
+    "Progress Indicator is the parent of every measure and checkpoint: milestones, metrics, key results and targets. A KPI is a metric marked as a key measure, and a Target holds the value a metric is checked against by a date. Metrics trace to the datasets behind them, and KPIs set the thresholds that raise escalations."
+   ],
+   "introduced_here": [
+    "GOAL",
+    "GOAL-SMART",
+    "GOAL-OPERATIONAL",
+    "OBJECTIVE",
+    "KEY-RESULT",
+    "PROGRESS-INDICATOR",
+    "MILESTONE",
+    "METRIC",
+    "KPI",
+    "TARGET"
+   ],
+   "also_shown": [
+    "DATASET",
+    "PROJECT",
+    "ESCALATION",
+    "OUTCOME"
+   ],
+   "relationships": [
+    {
+     "source": "GOAL-SMART",
+     "label": "is a kind of",
+     "target": "GOAL",
+     "kind": "sub"
+    },
+    {
+     "source": "GOAL-OPERATIONAL",
+     "label": "is a kind of",
+     "target": "GOAL",
+     "kind": "sub"
+    },
+    {
+     "source": "OBJECTIVE",
+     "label": "is a kind of",
+     "target": "GOAL",
+     "kind": "sub"
+    },
+    {
+     "source": "KEY-RESULT",
+     "label": "is a kind of",
+     "target": "PROGRESS-INDICATOR",
+     "kind": "sub"
+    },
+    {
+     "source": "MILESTONE",
+     "label": "is a kind of",
+     "target": "PROGRESS-INDICATOR",
+     "kind": "sub"
+    },
+    {
+     "source": "METRIC",
+     "label": "is a kind of",
+     "target": "PROGRESS-INDICATOR",
+     "kind": "sub"
+    },
+    {
+     "source": "KPI",
+     "label": "is a kind of",
+     "target": "METRIC",
+     "kind": "sub"
+    },
+    {
+     "source": "TARGET",
+     "label": "is a kind of",
+     "target": "PROGRESS-INDICATOR",
+     "kind": "sub"
+    },
+    {
+     "source": "PROGRESS-INDICATOR",
+     "label": "tracks progress toward",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "KEY-RESULT",
+     "label": "measures",
+     "target": "OBJECTIVE",
+     "kind": "rel"
+    },
+    {
+     "source": "TARGET",
+     "label": "sets value for",
+     "target": "METRIC",
+     "kind": "rel"
+    },
+    {
+     "source": "METRIC",
+     "label": "computed from",
+     "target": "DATASET",
+     "kind": "rel"
+    },
+    {
+     "source": "PROJECT",
+     "label": "tied to",
+     "target": "GOAL-SMART",
+     "kind": "rel"
+    },
+    {
+     "source": "KPI",
+     "label": "threshold triggers",
+     "target": "ESCALATION",
+     "kind": "rel"
+    },
+    {
+     "source": "OUTCOME",
+     "label": "compared with",
+     "target": "GOAL",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/05-goals-and-measures-of-progress.svg",
+   "diagram_png": "diagrams/png/05-goals-and-measures-of-progress.png"
+  },
+  {
+   "id": "execution",
+   "number": 6,
+   "title": "Programs, projects and outcomes",
+   "part": "Intent and execution",
+   "intro": [
+    "Execution Process is the parent of Program and Project. A Program coordinates related projects toward a shared objective, and a Project is a time-bound effort with defined scope and deliverables. Experiments and Campaigns are kinds of project, covered in the causal analysis and go-to-market sections.",
+    "Outcome records what execution actually achieved, so it can be compared with the goal. A Deliverable is a concrete project output that must satisfy its requirements, and a Release is a deliverable of software. A Commitment is a promise to deliver something by a date, and it is tracked across every handoff."
+   ],
+   "introduced_here": [
+    "EXEC",
+    "PROGRAM",
+    "PROJECT",
+    "OUTCOME",
+    "DELIVERABLE",
+    "REQUIREMENT",
+    "COMMITMENT"
+   ],
+   "also_shown": [
+    "GOAL",
+    "PLAN",
+    "MILESTONE",
+    "EXPERIMENT",
+    "CAMPAIGN",
+    "RELEASE"
+   ],
+   "relationships": [
+    {
+     "source": "PROGRAM",
+     "label": "is a kind of",
+     "target": "EXEC",
+     "kind": "sub"
+    },
+    {
+     "source": "PROJECT",
+     "label": "is a kind of",
+     "target": "EXEC",
+     "kind": "sub"
+    },
+    {
+     "source": "DELIVERABLE",
+     "label": "is a kind of",
+     "target": "OUTCOME",
+     "kind": "sub"
+    },
+    {
+     "source": "EXPERIMENT",
+     "label": "is a kind of",
+     "target": "PROJECT",
+     "kind": "sub"
+    },
+    {
+     "source": "CAMPAIGN",
+     "label": "is a kind of",
+     "target": "PROJECT",
+     "kind": "sub"
+    },
+    {
+     "source": "RELEASE",
+     "label": "is a kind of",
+     "target": "DELIVERABLE",
+     "kind": "sub"
+    },
+    {
+     "source": "EXEC",
+     "label": "works toward",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "PROGRAM",
+     "label": "executes",
+     "target": "PLAN",
+     "kind": "rel"
+    },
+    {
+     "source": "PROGRAM",
+     "label": "coordinates",
+     "target": "PROJECT",
+     "kind": "rel"
+    },
+    {
+     "source": "EXEC",
+     "label": "produces",
+     "target": "OUTCOME",
+     "kind": "rel"
+    },
+    {
+     "source": "PROJECT",
+     "label": "produces",
+     "target": "DELIVERABLE",
+     "kind": "rel"
+    },
+    {
+     "source": "PROJECT",
+     "label": "has",
+     "target": "MILESTONE",
+     "kind": "rel"
+    },
+    {
+     "source": "DELIVERABLE",
+     "label": "must satisfy",
+     "target": "REQUIREMENT",
+     "kind": "rel"
+    },
+    {
+     "source": "REQUIREMENT",
+     "label": "derived from",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "COMMITMENT",
+     "label": "promises",
+     "target": "DELIVERABLE",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/06-programs-projects-and-outcomes.svg",
+   "diagram_png": "diagrams/png/06-programs-projects-and-outcomes.png"
+  },
+  {
+   "id": "risks",
+   "number": 7,
+   "title": "Risks, issues and follow-through",
+   "part": "Intent and execution",
+   "intro": [
+    "A Risk is a possible future event with a likelihood and an impact on goals. An Issue is a current problem that is affecting execution now, and an Incident is an issue in a running service. Escalations are raised from issues and routed to the accountable owner, and Action Items track the follow-through.",
+    "Assumptions and Constraints make the premises of a plan explicit. An assumption is a belief the plan depends on that has not been verified. A constraint is a limit on options, such as budget, time or capacity. Dependency is an entity rather than a plain link because it carries its own owner, due date and status."
+   ],
+   "introduced_here": [
+    "RISK",
+    "ISSUE",
+    "ESCALATION",
+    "DEPENDENCY",
+    "ASSUMPTION",
+    "CONSTRAINT",
+    "ACTION-ITEM"
+   ],
+   "also_shown": [
+    "GOAL",
+    "PROJECT",
+    "ACCOUNTABLE-OWNER",
+    "PLAN",
+    "INCIDENT"
+   ],
+   "relationships": [
+    {
+     "source": "INCIDENT",
+     "label": "is a kind of",
+     "target": "ISSUE",
+     "kind": "sub"
+    },
+    {
+     "source": "RISK",
+     "label": "threatens",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "ISSUE",
+     "label": "affects",
+     "target": "PROJECT",
+     "kind": "rel"
+    },
+    {
+     "source": "ESCALATION",
+     "label": "raised from",
+     "target": "ISSUE",
+     "kind": "rel"
+    },
+    {
+     "source": "ESCALATION",
+     "label": "routed to",
+     "target": "ACCOUNTABLE-OWNER",
+     "kind": "rel"
+    },
+    {
+     "source": "ACTION-ITEM",
+     "label": "follows up",
+     "target": "ESCALATION",
+     "kind": "rel"
+    },
+    {
+     "source": "ASSUMPTION",
+     "label": "underpins",
+     "target": "PLAN",
+     "kind": "rel"
+    },
+    {
+     "source": "CONSTRAINT",
+     "label": "bounds",
+     "target": "PLAN",
+     "kind": "rel"
+    },
+    {
+     "source": "DEPENDENCY",
+     "label": "links work in",
+     "target": "PROJECT",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/07-risks-issues-and-follow-through.svg",
+   "diagram_png": "diagrams/png/07-risks-issues-and-follow-through.png"
+  },
+  {
+   "id": "governance",
+   "number": 8,
+   "title": "Policy, compliance and alignment",
+   "part": "Intent and execution",
+   "intro": [
+    "Policies are mandatory rules, and Practices are recommended ways of working where no rule applies. Each policy traces to its source: an Obligation from law, regulation, a standard or a contract, which may apply only in certain locations. Controls enforce or verify a policy, and Policy Exceptions allow a justified, time-limited departure without changing the policy.",
+    "Policies and ethical principles both bound what AI agents may do. When Concordia finds an action, plan or decision that conflicts with the goals or policies it should serve, it records an Alignment Finding and surfaces it to the accountable owner. Scheduled Reviews, such as quarterly business reviews and retrospectives, assess progress and produce the action items that follow."
+   ],
+   "introduced_here": [
+    "POLICY",
+    "PRACTICE",
+    "CONTROL",
+    "OBLIGATION",
+    "ALIGNMENT-FINDING",
+    "REVIEW",
+    "LOCATION"
+   ],
+   "also_shown": [
+    "CONTRACT",
+    "POLICY-EXCEPTION",
+    "AI-AGENT",
+    "ETHICAL-PRINCIPLE",
+    "GOAL",
+    "ACCOUNTABLE-OWNER",
+    "ACTION-ITEM"
+   ],
+   "relationships": [
+    {
+     "source": "CONTRACT",
+     "label": "source of",
+     "target": "OBLIGATION",
+     "kind": "rel"
+    },
+    {
+     "source": "OBLIGATION",
+     "label": "applies in",
+     "target": "LOCATION",
+     "kind": "rel"
+    },
+    {
+     "source": "OBLIGATION",
+     "label": "source of",
+     "target": "POLICY",
+     "kind": "rel"
+    },
+    {
+     "source": "CONTROL",
+     "label": "enforces",
+     "target": "POLICY",
+     "kind": "rel"
+    },
+    {
+     "source": "POLICY-EXCEPTION",
+     "label": "departs from",
+     "target": "POLICY",
+     "kind": "rel"
+    },
+    {
+     "source": "PRACTICE",
+     "label": "complements",
+     "target": "POLICY",
+     "kind": "rel"
+    },
+    {
+     "source": "POLICY",
+     "label": "constrains",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "ETHICAL-PRINCIPLE",
+     "label": "bounds",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "ALIGNMENT-FINDING",
+     "label": "conflicts with",
+     "target": "POLICY",
+     "kind": "rel"
+    },
+    {
+     "source": "ALIGNMENT-FINDING",
+     "label": "conflicts with",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "ALIGNMENT-FINDING",
+     "label": "surfaced to",
+     "target": "ACCOUNTABLE-OWNER",
+     "kind": "rel"
+    },
+    {
+     "source": "REVIEW",
+     "label": "assesses progress on",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "REVIEW",
+     "label": "produces",
+     "target": "ACTION-ITEM",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/08-policy-compliance-and-alignment.svg",
+   "diagram_png": "diagrams/png/08-policy-compliance-and-alignment.png"
+  },
+  {
+   "id": "machine",
+   "number": 9,
+   "title": "The Machine",
+   "part": "Intent and execution",
+   "intro": [
+    "A Machine is a complete capability unit: the goals it serves, the outcomes it produces, its accountable owner, its people, its processes and its technology. It is the unit Concordia governs and Delos improves.",
+    "Because a Machine is made of types from other sections, it shows how they fit together. Systems are the technology part and support the processes. The accountable owner answers for the goals, and outcomes are compared with those goals to see whether the Machine is delivering."
+   ],
+   "introduced_here": [
+    "MACHINE"
+   ],
+   "also_shown": [
+    "GOAL",
+    "OUTCOME",
+    "ACCOUNTABLE-OWNER",
+    "PERSON",
+    "PROCESS",
+    "SYSTEM"
+   ],
+   "relationships": [
+    {
+     "source": "MACHINE",
+     "label": "serves",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "MACHINE",
+     "label": "produces",
+     "target": "OUTCOME",
+     "kind": "rel"
+    },
+    {
+     "source": "MACHINE",
+     "label": "owned by",
+     "target": "ACCOUNTABLE-OWNER",
+     "kind": "rel"
+    },
+    {
+     "source": "MACHINE",
+     "label": "staffed by",
+     "target": "PERSON",
+     "kind": "rel"
+    },
+    {
+     "source": "MACHINE",
+     "label": "runs",
+     "target": "PROCESS",
+     "kind": "rel"
+    },
+    {
+     "source": "MACHINE",
+     "label": "uses technology",
+     "target": "SYSTEM",
+     "kind": "rel"
+    },
+    {
+     "source": "SYSTEM",
+     "label": "supports",
+     "target": "PROCESS",
+     "kind": "rel"
+    },
+    {
+     "source": "ACCOUNTABLE-OWNER",
+     "label": "answerable for",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "OUTCOME",
+     "label": "compared with",
+     "target": "GOAL",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/09-the-machine.svg",
+   "diagram_png": "diagrams/png/09-the-machine.png"
+  },
+  {
+   "id": "processes",
+   "number": 10,
+   "title": "Processes and workflows",
+   "part": "Processes and decisions",
+   "intro": [
+    "Process is the parent type for every way of getting work done. An Abstract Process is a reusable pattern that concrete processes are created from, and a Meta-Process is a process whose output is another process. A Persistent Process can run for a long time and pause for a human decision or an outside event, then resume with its state intact. BPMN Process is a persistent process written in BPMN notation.",
+    "Checklists are the simplest process and enforce quality gates before a state transition. Thought Processes and Agentic Workflows are also processes, covered in the reasoning and agent sections. Events trigger processes, and Handoffs carry work and context from one stage to the next."
+   ],
+   "introduced_here": [
+    "PROCESS",
+    "PROCESS-ABSTRACT",
+    "PROCESS-META",
+    "PROCESS-PERSISTENT",
+    "PROCESS-BPMN",
+    "CHECKLIST"
+   ],
+   "also_shown": [
+    "APPROVAL",
+    "EVENT",
+    "MODEL-STATE",
+    "AGENTIC-WORKFLOW",
+    "AI-AGENT",
+    "HANDOFF",
+    "SYSTEM",
+    "THOUGHT-PROCESS"
+   ],
+   "relationships": [
+    {
+     "source": "PROCESS-ABSTRACT",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "PROCESS-META",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "PROCESS-PERSISTENT",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "PROCESS-BPMN",
+     "label": "is a kind of",
+     "target": "PROCESS-PERSISTENT",
+     "kind": "sub"
+    },
+    {
+     "source": "CHECKLIST",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "AGENTIC-WORKFLOW",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "THOUGHT-PROCESS",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "PROCESS-ABSTRACT",
+     "label": "pattern for",
+     "target": "PROCESS",
+     "kind": "rel"
+    },
+    {
+     "source": "PROCESS-META",
+     "label": "designs",
+     "target": "PROCESS",
+     "kind": "rel"
+    },
+    {
+     "source": "PROCESS-PERSISTENT",
+     "label": "pauses for",
+     "target": "APPROVAL",
+     "kind": "rel"
+    },
+    {
+     "source": "EVENT",
+     "label": "triggers",
+     "target": "PROCESS",
+     "kind": "rel"
+    },
+    {
+     "source": "CHECKLIST",
+     "label": "gates transitions in",
+     "target": "MODEL-STATE",
+     "kind": "rel"
+    },
+    {
+     "source": "AGENTIC-WORKFLOW",
+     "label": "carried out by",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "HANDOFF",
+     "label": "moves work between stages of",
+     "target": "PROCESS",
+     "kind": "rel"
+    },
+    {
+     "source": "SYSTEM",
+     "label": "supports",
+     "target": "PROCESS",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/10-processes-and-workflows.svg",
+   "diagram_png": "diagrams/png/10-processes-and-workflows.png"
+  },
+  {
+   "id": "decisions",
+   "number": 11,
+   "title": "Decisions and recommendations",
+   "part": "Processes and decisions",
+   "intro": [
+    "A Decision records a choice with its context, its rationale and who made it. Architecture Decision Records, Approvals and Policy Exceptions are kinds of decision. Approvals authorize an action, change or state transition under a decision right, and a policy exception is an approved departure from a policy.",
+    "Huginn adds the reasoning around a decision. A Recommendation proposes a course of action with its reasoning, options and confidence. Options record what was weighed, not only what was chosen, and Decision Criteria make the trade-offs explicit and tie them to goals and principles. Most decisions start in meetings and rest on assumptions, and both are recorded."
+   ],
+   "introduced_here": [
+    "DECISION",
+    "ADR",
+    "APPROVAL",
+    "POLICY-EXCEPTION",
+    "RECOMMENDATION",
+    "OPTION",
+    "CRITERION"
+   ],
+   "also_shown": [
+    "GOAL",
+    "PRINCIPLE",
+    "DECISION-RIGHT",
+    "POLICY",
+    "MEETING",
+    "ASSUMPTION"
+   ],
+   "relationships": [
+    {
+     "source": "ADR",
+     "label": "is a kind of",
+     "target": "DECISION",
+     "kind": "sub"
+    },
+    {
+     "source": "APPROVAL",
+     "label": "is a kind of",
+     "target": "DECISION",
+     "kind": "sub"
+    },
+    {
+     "source": "POLICY-EXCEPTION",
+     "label": "is a kind of",
+     "target": "DECISION",
+     "kind": "sub"
+    },
+    {
+     "source": "RECOMMENDATION",
+     "label": "weighs",
+     "target": "OPTION",
+     "kind": "rel"
+    },
+    {
+     "source": "RECOMMENDATION",
+     "label": "informs",
+     "target": "DECISION",
+     "kind": "rel"
+    },
+    {
+     "source": "DECISION",
+     "label": "chooses among",
+     "target": "OPTION",
+     "kind": "rel"
+    },
+    {
+     "source": "CRITERION",
+     "label": "compares",
+     "target": "OPTION",
+     "kind": "rel"
+    },
+    {
+     "source": "CRITERION",
+     "label": "aligned with",
+     "target": "GOAL",
+     "kind": "rel"
+    },
+    {
+     "source": "CRITERION",
+     "label": "aligned with",
+     "target": "PRINCIPLE",
+     "kind": "rel"
+    },
+    {
+     "source": "APPROVAL",
+     "label": "exercises",
+     "target": "DECISION-RIGHT",
+     "kind": "rel"
+    },
+    {
+     "source": "POLICY-EXCEPTION",
+     "label": "departs from",
+     "target": "POLICY",
+     "kind": "rel"
+    },
+    {
+     "source": "MEETING",
+     "label": "origin of",
+     "target": "DECISION",
+     "kind": "rel"
+    },
+    {
+     "source": "ASSUMPTION",
+     "label": "underpins",
+     "target": "DECISION",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/11-decisions-and-recommendations.svg",
+   "diagram_png": "diagrams/png/11-decisions-and-recommendations.png"
+  },
+  {
+   "id": "reasoning",
+   "number": 12,
+   "title": "Agent reasoning context",
+   "part": "Processes and decisions",
+   "intro": [
+    "Injectable Context is anything that can be inserted into an agent's working context. Axioms are fixed premises, Heuristics are rules of thumb for uncertain cases, Prompt Templates standardize instructions, and Agent Guidance shapes how an agent behaves. A Skill packages context that agents can load, and a Lazy-Load Skill adds guidance on when to load it, so the agent's context stays small.",
+    "A Mental Model bundles these parts with ontologies, taxonomies, causal models and state models into one frame for a domain. Thought Processes are flowcharts of reasoning steps, and they make an agent's reasoning repeatable and reviewable."
+   ],
+   "introduced_here": [
+    "CONTEXT",
+    "AXIOM",
+    "HEURISTIC",
+    "PROMPT-TEMPLATE",
+    "AGENT-GUIDANCE",
+    "MENTAL-MODEL",
+    "THOUGHT-PROCESS",
+    "SKILL",
+    "SKILL-LAZY"
+   ],
+   "also_shown": [
+    "ONTOLOGY",
+    "TAXONOMY",
+    "MODEL-CAUSAL",
+    "MODEL-STATE",
+    "AI-AGENT",
+    "PROCESS"
+   ],
+   "relationships": [
+    {
+     "source": "AXIOM",
+     "label": "is a kind of",
+     "target": "CONTEXT",
+     "kind": "sub"
+    },
+    {
+     "source": "HEURISTIC",
+     "label": "is a kind of",
+     "target": "CONTEXT",
+     "kind": "sub"
+    },
+    {
+     "source": "PROMPT-TEMPLATE",
+     "label": "is a kind of",
+     "target": "CONTEXT",
+     "kind": "sub"
+    },
+    {
+     "source": "AGENT-GUIDANCE",
+     "label": "is a kind of",
+     "target": "CONTEXT",
+     "kind": "sub"
+    },
+    {
+     "source": "THOUGHT-PROCESS",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "SKILL",
+     "label": "is a kind of",
+     "target": "CONTEXT",
+     "kind": "sub"
+    },
+    {
+     "source": "SKILL-LAZY",
+     "label": "is a kind of",
+     "target": "SKILL",
+     "kind": "sub"
+    },
+    {
+     "source": "MENTAL-MODEL",
+     "label": "bundles",
+     "target": "CONTEXT",
+     "kind": "rel"
+    },
+    {
+     "source": "MENTAL-MODEL",
+     "label": "bundles",
+     "target": "ONTOLOGY",
+     "kind": "rel"
+    },
+    {
+     "source": "MENTAL-MODEL",
+     "label": "bundles",
+     "target": "TAXONOMY",
+     "kind": "rel"
+    },
+    {
+     "source": "MENTAL-MODEL",
+     "label": "bundles",
+     "target": "MODEL-CAUSAL",
+     "kind": "rel"
+    },
+    {
+     "source": "MENTAL-MODEL",
+     "label": "bundles",
+     "target": "MODEL-STATE",
+     "kind": "rel"
+    },
+    {
+     "source": "MENTAL-MODEL",
+     "label": "bundles",
+     "target": "THOUGHT-PROCESS",
+     "kind": "rel"
+    },
+    {
+     "source": "CONTEXT",
+     "label": "loaded into",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/12-agent-reasoning-context.svg",
+   "diagram_png": "diagrams/png/12-agent-reasoning-context.png"
+  },
+  {
+   "id": "agents",
+   "number": 13,
+   "title": "AI agents and technology",
+   "part": "Agents, knowledge and evidence",
+   "intro": [
+    "An AI Agent acts for a person or an organization and is defined by its instructions, tools and model. Agents are accountable actors in their own right, separate from people, and each one has a human sponsor. An Agent Harness is the runtime that hosts an agent, an AI Model is the specific model and version it uses, and Agent Tools are the capabilities it can call, such as MCP servers and APIs.",
+    "Harnesses, models and tools are all kinds of System, the technology part of a Machine, as are code repositories and software components. An Agentic Workflow is a process carried out wholly or partly by agents. It can be described once and moved between systems, which is the work Pleiades does."
+   ],
+   "introduced_here": [
+    "AI-AGENT",
+    "HARNESS",
+    "AI-MODEL",
+    "AGENT-TOOL",
+    "AGENTIC-WORKFLOW",
+    "SYSTEM"
+   ],
+   "also_shown": [
+    "PERSON",
+    "SKILL",
+    "PROCESS",
+    "REPOSITORY",
+    "SOFTWARE-COMPONENT"
+   ],
+   "relationships": [
+    {
+     "source": "HARNESS",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "AI-MODEL",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "AGENT-TOOL",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "AGENTIC-WORKFLOW",
+     "label": "is a kind of",
+     "target": "PROCESS",
+     "kind": "sub"
+    },
+    {
+     "source": "REPOSITORY",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "SOFTWARE-COMPONENT",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "HARNESS",
+     "label": "runs",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "AI-AGENT",
+     "label": "uses",
+     "target": "AI-MODEL",
+     "kind": "rel"
+    },
+    {
+     "source": "AI-AGENT",
+     "label": "calls",
+     "target": "AGENT-TOOL",
+     "kind": "rel"
+    },
+    {
+     "source": "AGENTIC-WORKFLOW",
+     "label": "carried out by",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "AI-AGENT",
+     "label": "sponsored by",
+     "target": "PERSON",
+     "kind": "rel"
+    },
+    {
+     "source": "SKILL",
+     "label": "loaded by",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/13-ai-agents-and-technology.svg",
+   "diagram_png": "diagrams/png/13-ai-agents-and-technology.png"
+  },
+  {
+   "id": "knowledge",
+   "number": 14,
+   "title": "Knowledge and evidence",
+   "part": "Agents, knowledge and evidence",
+   "intro": [
+    "These are the everyday records Muninn keeps. A Fact is a statement believed true for a stated period, with its source and confidence. Unlike an axiom, a fact can be questioned and superseded. A Lesson Learned is an insight from experience, with the context where it applies. Preferences record what a person, team or customer has chosen, and Open Questions make known gaps explicit and route them to people who can answer.",
+    "Episodes are recorded sessions such as agent transcripts and meeting records. They are the evidence that facts and lessons are extracted from. Documents hold authored content, and External References point to objects in systems of record, keeping a cached snapshot and a freshness rule instead of a copy. A Handoff is the one Working-class type, and it carries work and context across a boundary."
+   ],
+   "introduced_here": [
+    "FACT",
+    "LESSON",
+    "PREFERENCE",
+    "HANDOFF",
+    "OPEN-QUESTION",
+    "EPISODE",
+    "DOCUMENT",
+    "EXTERNAL-REFERENCE",
+    "TERM",
+    "EVENT",
+    "MEETING"
+   ],
+   "also_shown": [
+    "DECISION",
+    "SYSTEM",
+    "PERSON",
+    "AI-AGENT"
+   ],
+   "relationships": [
+    {
+     "source": "MEETING",
+     "label": "is a kind of",
+     "target": "EVENT",
+     "kind": "sub"
+    },
+    {
+     "source": "FACT",
+     "label": "extracted from",
+     "target": "EPISODE",
+     "kind": "rel"
+    },
+    {
+     "source": "LESSON",
+     "label": "extracted from",
+     "target": "EPISODE",
+     "kind": "rel"
+    },
+    {
+     "source": "FACT",
+     "label": "sourced from",
+     "target": "DOCUMENT",
+     "kind": "rel"
+    },
+    {
+     "source": "EPISODE",
+     "label": "records",
+     "target": "MEETING",
+     "kind": "rel"
+    },
+    {
+     "source": "MEETING",
+     "label": "origin of",
+     "target": "DECISION",
+     "kind": "rel"
+    },
+    {
+     "source": "EXTERNAL-REFERENCE",
+     "label": "points to object in",
+     "target": "SYSTEM",
+     "kind": "rel"
+    },
+    {
+     "source": "OPEN-QUESTION",
+     "label": "routed to",
+     "target": "PERSON",
+     "kind": "rel"
+    },
+    {
+     "source": "PREFERENCE",
+     "label": "held by",
+     "target": "PERSON",
+     "kind": "rel"
+    },
+    {
+     "source": "HANDOFF",
+     "label": "passes context between",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "TERM",
+     "label": "vocabulary for",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/14-knowledge-and-evidence.svg",
+   "diagram_png": "diagrams/png/14-knowledge-and-evidence.png"
+  },
+  {
+   "id": "causal",
+   "number": 15,
+   "title": "Causal analysis and prediction",
+   "part": "Agents, knowledge and evidence",
+   "intro": [
+    "Delos works with these types to explain why outcomes happen. A Causal Model links Factors by cause and effect, and a Predictive Model forecasts values or outcomes from data. Factors are the variables both kinds of model reason about, and each one links to the metrics and datasets that measure it.",
+    "A Hypothesis is a testable explanation of an outcome. An Experiment is a project that tests a hypothesis under control, records evidence for the causal model, and turns results into lessons. Bottlenecks mark where throughput or results are held back, and incidents feed the causal analysis."
+   ],
+   "introduced_here": [
+    "MODEL-CAUSAL",
+    "MODEL-PREDICTIVE",
+    "FACTOR",
+    "HYPOTHESIS",
+    "EXPERIMENT",
+    "BOTTLENECK",
+    "DATASET"
+   ],
+   "also_shown": [
+    "METRIC",
+    "OUTCOME",
+    "LESSON",
+    "INCIDENT",
+    "PROJECT"
+   ],
+   "relationships": [
+    {
+     "source": "EXPERIMENT",
+     "label": "is a kind of",
+     "target": "PROJECT",
+     "kind": "sub"
+    },
+    {
+     "source": "MODEL-CAUSAL",
+     "label": "links",
+     "target": "FACTOR",
+     "kind": "rel"
+    },
+    {
+     "source": "MODEL-PREDICTIVE",
+     "label": "uses",
+     "target": "FACTOR",
+     "kind": "rel"
+    },
+    {
+     "source": "MODEL-PREDICTIVE",
+     "label": "trained on",
+     "target": "DATASET",
+     "kind": "rel"
+    },
+    {
+     "source": "FACTOR",
+     "label": "measured by",
+     "target": "METRIC",
+     "kind": "rel"
+    },
+    {
+     "source": "FACTOR",
+     "label": "drawn from",
+     "target": "DATASET",
+     "kind": "rel"
+    },
+    {
+     "source": "HYPOTHESIS",
+     "label": "explains",
+     "target": "OUTCOME",
+     "kind": "rel"
+    },
+    {
+     "source": "EXPERIMENT",
+     "label": "tests",
+     "target": "HYPOTHESIS",
+     "kind": "rel"
+    },
+    {
+     "source": "EXPERIMENT",
+     "label": "evidence for",
+     "target": "MODEL-CAUSAL",
+     "kind": "rel"
+    },
+    {
+     "source": "EXPERIMENT",
+     "label": "yields",
+     "target": "LESSON",
+     "kind": "rel"
+    },
+    {
+     "source": "BOTTLENECK",
+     "label": "holds back",
+     "target": "OUTCOME",
+     "kind": "rel"
+    },
+    {
+     "source": "INCIDENT",
+     "label": "feeds",
+     "target": "MODEL-CAUSAL",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/15-causal-analysis-and-prediction.svg",
+   "diagram_png": "diagrams/png/15-causal-analysis-and-prediction.png"
+  },
+  {
+   "id": "evaluation",
+   "number": 16,
+   "title": "Evaluation",
+   "part": "Agents, knowledge and evidence",
+   "intro": [
+    "Chiron uses these types to define and check acceptable behavior. A Test Suite is a versioned set of test cases for an agent, workflow or system. Each Test Case is an input with expected behavior and grading criteria. A Competency Question is a test case for the knowledge base: a question Muninn must be able to answer, with its expected answer.",
+    "An Evaluation Run is one execution of a suite against a specific version, with its results. It is a kind of Outcome, so results can be compared from version to version and a run shows when a change broke something. Runs are repeated when the AI model behind an agent changes."
+   ],
+   "introduced_here": [
+    "TEST-SUITE",
+    "TEST-CASE",
+    "COMPETENCY-QUESTION",
+    "EVAL-RUN"
+   ],
+   "also_shown": [
+    "AI-AGENT",
+    "AGENTIC-WORKFLOW",
+    "SYSTEM",
+    "AI-MODEL",
+    "FACT",
+    "OUTCOME"
+   ],
+   "relationships": [
+    {
+     "source": "COMPETENCY-QUESTION",
+     "label": "is a kind of",
+     "target": "TEST-CASE",
+     "kind": "sub"
+    },
+    {
+     "source": "EVAL-RUN",
+     "label": "is a kind of",
+     "target": "OUTCOME",
+     "kind": "sub"
+    },
+    {
+     "source": "AI-MODEL",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "TEST-SUITE",
+     "label": "groups",
+     "target": "TEST-CASE",
+     "kind": "rel"
+    },
+    {
+     "source": "EVAL-RUN",
+     "label": "executes",
+     "target": "TEST-SUITE",
+     "kind": "rel"
+    },
+    {
+     "source": "TEST-SUITE",
+     "label": "tests",
+     "target": "AI-AGENT",
+     "kind": "rel"
+    },
+    {
+     "source": "TEST-SUITE",
+     "label": "tests",
+     "target": "AGENTIC-WORKFLOW",
+     "kind": "rel"
+    },
+    {
+     "source": "TEST-SUITE",
+     "label": "tests",
+     "target": "SYSTEM",
+     "kind": "rel"
+    },
+    {
+     "source": "EVAL-RUN",
+     "label": "re-evaluates",
+     "target": "AI-MODEL",
+     "kind": "rel"
+    },
+    {
+     "source": "COMPETENCY-QUESTION",
+     "label": "answered from",
+     "target": "FACT",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/16-evaluation.svg",
+   "diagram_png": "diagrams/png/16-evaluation.png"
+  },
+  {
+   "id": "gtm",
+   "number": 17,
+   "title": "Go-to-market domain pack",
+   "part": "Domain packs",
+   "intro": [
+    "This pack is shipped with Muninn and loaded for go-to-market work. Products and Offerings are what the organization sells, and an offering is a packaged, priced configuration of products and services. Market Segments and Buyer Personas describe who buys. Positioning Statements are approved Normative content, so generated copy stays on message and competitive claims are governed.",
+    "Campaigns generate leads, and leads that qualify become opportunities against an account. Pipeline and deal records usually stay in the CRM, and Muninn holds them as External References. Contracts are documents that hold the terms and the commitments made in a deal. Support cases feed back into the product and its positioning."
+   ],
+   "introduced_here": [
+    "PRODUCT",
+    "OFFERING",
+    "MARKET-SEGMENT",
+    "PERSONA",
+    "POSITIONING",
+    "CAMPAIGN",
+    "LEAD",
+    "OPPORTUNITY",
+    "SUPPORT-CASE",
+    "CONTRACT"
+   ],
+   "also_shown": [
+    "COMPETITOR",
+    "ACCOUNT",
+    "CONTACT",
+    "COMMITMENT",
+    "DOCUMENT"
+   ],
+   "relationships": [
+    {
+     "source": "OFFERING",
+     "label": "is a kind of",
+     "target": "PRODUCT",
+     "kind": "sub"
+    },
+    {
+     "source": "CONTRACT",
+     "label": "is a kind of",
+     "target": "DOCUMENT",
+     "kind": "sub"
+    },
+    {
+     "source": "POSITIONING",
+     "label": "differentiates",
+     "target": "OFFERING",
+     "kind": "rel"
+    },
+    {
+     "source": "POSITIONING",
+     "label": "for",
+     "target": "MARKET-SEGMENT",
+     "kind": "rel"
+    },
+    {
+     "source": "POSITIONING",
+     "label": "positioned against",
+     "target": "COMPETITOR",
+     "kind": "rel"
+    },
+    {
+     "source": "PERSONA",
+     "label": "shapes messaging in",
+     "target": "POSITIONING",
+     "kind": "rel"
+    },
+    {
+     "source": "CAMPAIGN",
+     "label": "targets",
+     "target": "MARKET-SEGMENT",
+     "kind": "rel"
+    },
+    {
+     "source": "CAMPAIGN",
+     "label": "source of",
+     "target": "LEAD",
+     "kind": "rel"
+    },
+    {
+     "source": "LEAD",
+     "label": "converts to",
+     "target": "OPPORTUNITY",
+     "kind": "rel"
+    },
+    {
+     "source": "OPPORTUNITY",
+     "label": "potential sale to",
+     "target": "ACCOUNT",
+     "kind": "rel"
+    },
+    {
+     "source": "CONTACT",
+     "label": "works at",
+     "target": "ACCOUNT",
+     "kind": "rel"
+    },
+    {
+     "source": "CONTRACT",
+     "label": "agreement with",
+     "target": "ACCOUNT",
+     "kind": "rel"
+    },
+    {
+     "source": "CONTRACT",
+     "label": "holds",
+     "target": "COMMITMENT",
+     "kind": "rel"
+    },
+    {
+     "source": "PRODUCT",
+     "label": "bought by",
+     "target": "ACCOUNT",
+     "kind": "rel"
+    },
+    {
+     "source": "SUPPORT-CASE",
+     "label": "raised by",
+     "target": "ACCOUNT",
+     "kind": "rel"
+    },
+    {
+     "source": "SUPPORT-CASE",
+     "label": "informs",
+     "target": "PRODUCT",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/17-go-to-market-domain-pack.svg",
+   "diagram_png": "diagrams/png/17-go-to-market-domain-pack.png"
+  },
+  {
+   "id": "swe",
+   "number": 18,
+   "title": "Software engineering domain pack",
+   "part": "Domain packs",
+   "intro": [
+    "This pack is loaded for engineering work. Code Repositories and Software Components are kinds of System, and they anchor engineering knowledge to the code itself. Architecture decisions, constraints and owners attach to the components they govern, and repository history shows when newer knowledge has superseded older knowledge.",
+    "A Release is a versioned delivery of software and a kind of Deliverable. It links roadmap items, fixes and customer commitments to what actually shipped, which is where the go-to-market and engineering packs meet. An Incident is an Issue in a running service, and it captures causes, fixes and lessons for causal analysis."
+   ],
+   "introduced_here": [
+    "REPOSITORY",
+    "SOFTWARE-COMPONENT",
+    "RELEASE",
+    "INCIDENT"
+   ],
+   "also_shown": [
+    "ROADMAP",
+    "COMMITMENT",
+    "LESSON",
+    "MODEL-CAUSAL",
+    "ADR",
+    "CONSTRAINT",
+    "SYSTEM",
+    "DELIVERABLE",
+    "ISSUE"
+   ],
+   "relationships": [
+    {
+     "source": "REPOSITORY",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "SOFTWARE-COMPONENT",
+     "label": "is a kind of",
+     "target": "SYSTEM",
+     "kind": "sub"
+    },
+    {
+     "source": "RELEASE",
+     "label": "is a kind of",
+     "target": "DELIVERABLE",
+     "kind": "sub"
+    },
+    {
+     "source": "INCIDENT",
+     "label": "is a kind of",
+     "target": "ISSUE",
+     "kind": "sub"
+    },
+    {
+     "source": "REPOSITORY",
+     "label": "stores source of",
+     "target": "SOFTWARE-COMPONENT",
+     "kind": "rel"
+    },
+    {
+     "source": "RELEASE",
+     "label": "ships",
+     "target": "SOFTWARE-COMPONENT",
+     "kind": "rel"
+    },
+    {
+     "source": "RELEASE",
+     "label": "delivers",
+     "target": "ROADMAP",
+     "kind": "rel"
+    },
+    {
+     "source": "RELEASE",
+     "label": "fulfills",
+     "target": "COMMITMENT",
+     "kind": "rel"
+    },
+    {
+     "source": "INCIDENT",
+     "label": "disrupts",
+     "target": "SOFTWARE-COMPONENT",
+     "kind": "rel"
+    },
+    {
+     "source": "INCIDENT",
+     "label": "yields",
+     "target": "LESSON",
+     "kind": "rel"
+    },
+    {
+     "source": "INCIDENT",
+     "label": "feeds",
+     "target": "MODEL-CAUSAL",
+     "kind": "rel"
+    },
+    {
+     "source": "ADR",
+     "label": "governs",
+     "target": "SOFTWARE-COMPONENT",
+     "kind": "rel"
+    },
+    {
+     "source": "CONSTRAINT",
+     "label": "applies to",
+     "target": "SOFTWARE-COMPONENT",
+     "kind": "rel"
+    }
+   ],
+   "diagram_svg": "diagrams/svg/18-software-engineering-domain-pack.svg",
+   "diagram_png": "diagrams/png/18-software-engineering-domain-pack.png"
+  }
+ ]
+}
