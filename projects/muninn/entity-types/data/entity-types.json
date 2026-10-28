@@ -1,0 +1,2628 @@
+[
+ {
+  "id": "ENTITY-TYPE",
+  "name": "Entity Type",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "This list of built-in entity types plus other entity types that may be added",
+  "purposes": [
+   "Define the schema, category, and state model for each kind of entity ETM manages",
+   "Register new entity types as the taxonomy grows"
+  ],
+  "memory_class": "Schema",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TAXONOMY",
+  "name": "Taxonomy",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "Formal entity definitions and hierarchies",
+  "purposes": [
+   "Classify entities into consistent types and hierarchies",
+   "Give agents and people a shared vocabulary"
+  ],
+  "memory_class": "Schema",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema",
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TAXONOMY-MAP",
+  "name": "Taxonomy Map",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "Mapping of entities across different taxonomies",
+  "purposes": [
+   "Define entity synonyms across different taxonomies",
+   "Define similarities and differences across entities that are partially synonymous."
+  ],
+  "memory_class": "Schema",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ONTOLOGY",
+  "name": "Ontology",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "Formal concept hierarchies and relationship definitions",
+  "purposes": [
+   "Define how concepts relate to one another",
+   "Support agent reasoning across connected entities"
+  ],
+  "memory_class": "Schema",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema",
+   "reasoning"
+  ],
+  "sub_types": [
+   "ORG-STRUCTURE"
+  ]
+ },
+ {
+  "id": "ONTOLOGY-MAP",
+  "name": "Ontology Map",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "Mapping of entities and relationships across different ontologies",
+  "purposes": [
+   "Align concepts and relationships across different ontologies",
+   "Translate between domain or client models without losing meaning"
+  ],
+  "memory_class": "Schema",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "DDL",
+  "name": "Data Mapping",
+  "category": "Data-Access",
+  "parent": null,
+  "description": "Mapping of abstract entities into physical data schemas",
+  "purposes": [
+   "Map abstract entity types to database tables and fields",
+   "Generate and validate physical schemas"
+  ],
+  "memory_class": "Schema",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "MODEL-CAUSAL",
+  "name": "Causal Model",
+  "category": "Model",
+  "parent": null,
+  "description": "Cause-and-effect relationships among factors in a system",
+  "purposes": [
+   "Explain why outcomes occur",
+   "Assess the likely effects of proposed changes"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "causal",
+  "appears_in": [
+   "reasoning",
+   "causal",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "MODEL-STATE",
+  "name": "State Model",
+  "category": "Model",
+  "parent": null,
+  "description": "Lifecycle states and allowed transitions for an entity type",
+  "purposes": [
+   "Define valid states, transitions, and preconditions",
+   "Enforce lifecycle rules when entities change"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema",
+   "processes",
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "MODEL-PREDICTIVE",
+  "name": "Predictive Model",
+  "category": "Model",
+  "parent": null,
+  "description": "A model that forecasts future values or outcomes from data",
+  "purposes": [
+   "Forecast outcomes, risks, and trends",
+   "Inform decisions before results are known"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "causal",
+  "appears_in": [
+   "causal"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PERSON",
+  "name": "Person",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "A human person",
+  "purposes": [
+   "Identify individuals across all roles and organizations",
+   "Anchor person role sub-types such as Employee and Accountable Owner"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people",
+   "roles",
+   "machine",
+   "agents",
+   "knowledge"
+  ],
+  "sub_types": [
+   "EMPLOYEE",
+   "CONTRACTOR",
+   "CONSULTANT",
+   "CONTACT"
+  ]
+ },
+ {
+  "id": "ORGANIZATION",
+  "name": "Organization",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "Any structured collection of people",
+  "purposes": [
+   "Represent any group of people as a single entity",
+   "Serve as parent type for companies, units, and teams"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "schema",
+   "people"
+  ],
+  "sub_types": [
+   "ACCOUNT",
+   "COMPANY",
+   "SUBSIDIARY",
+   "DIVISION",
+   "DEPARTMENT",
+   "TEAM"
+  ]
+ },
+ {
+  "id": "ACCOUNT",
+  "name": "Account",
+  "category": "Abstract Knowledge",
+  "parent": "ORGANIZATION",
+  "description": "Customer organization",
+  "purposes": [
+   "Track a customer relationship as a commercial record",
+   "Link contacts, opportunities, and engagements to a customer"
+  ],
+  "memory_class": "Reference",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people",
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "COMPANY",
+  "name": "Company",
+  "category": "Abstract Knowledge",
+  "parent": "ORGANIZATION",
+  "description": "A legally constituted business organization",
+  "purposes": [
+   "Represent legal business entities",
+   "Serve as parent type for Vendor and Partner"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": [
+   "VENDOR",
+   "PARTNER",
+   "COMPETITOR"
+  ]
+ },
+ {
+  "id": "SUBSIDIARY",
+  "name": "Subsidiary",
+  "category": "Abstract Knowledge",
+  "parent": "ORGANIZATION",
+  "description": "A company owned or controlled by a parent company",
+  "purposes": [
+   "Model ownership and control between companies",
+   "Roll up subsidiary results to the parent"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "DIVISION",
+  "name": "Division",
+  "category": "Abstract Knowledge",
+  "parent": "ORGANIZATION",
+  "description": "A major business unit within a company",
+  "purposes": [
+   "Group departments under a business unit",
+   "Assign division-level goals, ownership, and results"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "DEPARTMENT",
+  "name": "Department",
+  "category": "Abstract Knowledge",
+  "parent": "ORGANIZATION",
+  "description": "A functional unit within a company or division",
+  "purposes": [
+   "Organize people by function",
+   "Assign functional accountability and processes"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TEAM",
+  "name": "Team",
+  "category": "Abstract Knowledge",
+  "parent": "ORGANIZATION",
+  "description": "A small group of people doing shared work",
+  "purposes": [
+   "Assign work, goals, and ownership to working groups",
+   "Track team-level execution"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ORG-STRUCTURE",
+  "name": "Organization Structure",
+  "category": "Abstract Knowledge",
+  "parent": "ONTOLOGY",
+  "description": "Ontological mapping of organizational entities",
+  "purposes": [
+   "Model reporting and containment relationships among organizational entities",
+   "Show which units contain which and who reports to whom"
+  ],
+  "memory_class": "Schema",
+  "tier": "Core",
+  "home_section": "schema",
+  "appears_in": [
+   "schema",
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "VENDOR",
+  "name": "Vendor",
+  "category": "Abstract Knowledge",
+  "parent": "COMPANY",
+  "description": "A company that supplies goods or services to the organization",
+  "purposes": [
+   "Track supplier relationships, contracts, and dependencies",
+   "Assess vendor risk and performance"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PARTNER",
+  "name": "Partner",
+  "category": "Abstract Knowledge",
+  "parent": "COMPANY",
+  "description": "A company that works with the organization for mutual benefit",
+  "purposes": [
+   "Track alliance, channel, and delivery partnerships",
+   "Coordinate shared work and commitments"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "EMPLOYEE",
+  "name": "Employee",
+  "category": "Abstract Knowledge",
+  "parent": "PERSON",
+  "description": "A person employed directly by the organization",
+  "purposes": [
+   "Track staff, roles, and reporting lines",
+   "Assign internal ownership and work"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CONTRACTOR",
+  "name": "Contractor",
+  "category": "Abstract Knowledge",
+  "parent": "PERSON",
+  "description": "A person engaged under contract to perform defined work",
+  "purposes": [
+   "Track non-employee workers and contract terms",
+   "Assign defined work and access"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CONSULTANT",
+  "name": "Consultant",
+  "category": "Abstract Knowledge",
+  "parent": "PERSON",
+  "description": "An external person engaged to provide expert advice",
+  "purposes": [
+   "Track advisory engagements and their scope",
+   "Distinguish advice from delivered work"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "BOARD-MEMBER",
+  "name": "Board Member",
+  "category": "Abstract Knowledge",
+  "parent": "ROLE",
+  "description": "A person serving on a governing or advisory board",
+  "purposes": [
+   "Track governance roles and oversight",
+   "Route board-level decisions and escalations"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "roles",
+  "appears_in": [
+   "roles"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "HIRING-MANAGER",
+  "name": "Hiring Manager",
+  "category": "Abstract Knowledge",
+  "parent": "ROLE",
+  "description": "A person responsible for filling an open role",
+  "purposes": [
+   "Assign ownership of open roles and hiring decisions",
+   "Route candidate reviews and approvals"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "roles",
+  "appears_in": [
+   "roles"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "SUPERVISOR",
+  "name": "Supervisor",
+  "category": "Abstract Knowledge",
+  "parent": "ROLE",
+  "description": "A person who directs and oversees the work of others",
+  "purposes": [
+   "Define reporting lines",
+   "Route approvals, reviews, and escalations to the right person"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "roles",
+  "appears_in": [
+   "roles"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PROCESS",
+  "name": "Process",
+  "category": "Process",
+  "parent": null,
+  "description": "A defined sequence of steps that produces an output",
+  "purposes": [
+   "Describe how work gets done",
+   "Serve as parent type for all process variants"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "processes",
+  "appears_in": [
+   "machine",
+   "processes",
+   "reasoning",
+   "agents"
+  ],
+  "sub_types": [
+   "PROCESS-ABSTRACT",
+   "PROCESS-META",
+   "PROCESS-PERSISTENT",
+   "CHECKLIST",
+   "THOUGHT-PROCESS",
+   "AGENTIC-WORKFLOW"
+  ]
+ },
+ {
+  "id": "PROCESS-ABSTRACT",
+  "name": "Abstract Process",
+  "category": "Process",
+  "parent": "PROCESS",
+  "description": "A general process pattern not tied to a specific implementation",
+  "purposes": [
+   "Capture reusable process designs",
+   "Instantiate concrete processes from a common pattern"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "processes",
+  "appears_in": [
+   "processes"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PROCESS-META",
+  "name": "Meta-Process",
+  "category": "Process",
+  "parent": "PROCESS",
+  "description": "A process whose intended output is a process",
+  "purposes": [
+   "Generate, design, or improve other processes",
+   "Automate process creation within ETM"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "processes",
+  "appears_in": [
+   "processes"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PROCESS-PERSISTENT",
+  "name": "Persistent Process",
+  "category": "Process",
+  "parent": "PROCESS",
+  "description": "A long-running process that can pause in wait states for human-in-the-loop (HITL) input or other external events",
+  "purposes": [
+   "Run work that spans long periods",
+   "Pause for HITL decisions or external events and resume with state intact"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "processes",
+  "appears_in": [
+   "processes"
+  ],
+  "sub_types": [
+   "PROCESS-BPMN"
+  ]
+ },
+ {
+  "id": "PROCESS-BPMN",
+  "name": "BPMN Process",
+  "category": "Process",
+  "parent": "PROCESS-PERSISTENT",
+  "description": "A persistent process defined in BPMN notation",
+  "purposes": [
+   "Model processes in a standard, tool-readable format",
+   "Execute or exchange processes with BPMN engines"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "processes",
+  "appears_in": [
+   "processes"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CHECKLIST",
+  "name": "Checklist",
+  "category": "Process",
+  "parent": "PROCESS",
+  "description": "An ordered list of items to verify or complete",
+  "purposes": [
+   "Verify that required steps or criteria are met",
+   "Enforce quality gates before state transitions"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "processes",
+  "appears_in": [
+   "schema",
+   "processes"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CONTEXT",
+  "name": "Injectable Context",
+  "category": "Huginn",
+  "parent": null,
+  "description": "Content that can be inserted into an agent's working context",
+  "purposes": [
+   "Supply agents with the knowledge a task needs",
+   "Serve as parent type for axioms, heuristics, templates, guidance, and skills"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning"
+  ],
+  "sub_types": [
+   "AXIOM",
+   "HEURISTIC",
+   "PROMPT-TEMPLATE",
+   "AGENT-GUIDANCE",
+   "SKILL"
+  ]
+ },
+ {
+  "id": "AXIOM",
+  "name": "Axioms",
+  "category": "Huginn",
+  "parent": "CONTEXT",
+  "description": "A statement taken as true without further justification",
+  "purposes": [
+   "Set fixed premises for agent reasoning",
+   "Keep agents consistent with non-negotiable facts and rules"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "HEURISTIC",
+  "name": "Heuristics",
+  "category": "Huginn",
+  "parent": "CONTEXT",
+  "description": "A rule of thumb that guides judgment under uncertainty",
+  "purposes": [
+   "Help agents make reasonable choices without full information",
+   "Capture practical experience as reusable guidance"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PROMPT-TEMPLATE",
+  "name": "Prompt Template",
+  "category": "Huginn",
+  "parent": "CONTEXT",
+  "description": "A reusable prompt structure with placeholders for inputs",
+  "purposes": [
+   "Standardize how agents are instructed",
+   "Produce consistent prompts across tasks"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "AGENT-GUIDANCE",
+  "name": "Agent Guidance",
+  "category": "Huginn",
+  "parent": "CONTEXT",
+  "description": "Instructions on how an agent should behave or approach a task",
+  "purposes": [
+   "Shape agent behavior, scope, and boundaries",
+   "Direct agents on when and how to act"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "MENTAL-MODEL",
+  "name": "Mental Models",
+  "category": "Huginn",
+  "parent": null,
+  "description": "Structured collection of ontologies, taxonomies, causal models, state models, axioms, heuristics, prompt templates, and reasoning guidance.",
+  "purposes": [
+   "Bundle related reasoning components into one coherent frame",
+   "Give agents a consistent way to understand and decide within a domain"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "THOUGHT-PROCESS",
+  "name": "Thought Processes",
+  "category": "Huginn",
+  "parent": "PROCESS",
+  "description": "Flowchart of reasoning steps",
+  "purposes": [
+   "Guide agents through multi-step reasoning",
+   "Make reasoning repeatable and reviewable"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "processes",
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "SKILL",
+  "name": "Skill",
+  "category": "Agent Skills",
+  "parent": "CONTEXT",
+  "description": "A package of injectable context",
+  "purposes": [
+   "Package capabilities and procedures that agents can load",
+   "Reuse proven context across agents and tasks"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning",
+   "agents"
+  ],
+  "sub_types": [
+   "SKILL-LAZY"
+  ]
+ },
+ {
+  "id": "SKILL-LAZY",
+  "name": "Lazy-Load Skill",
+  "category": "Agent Skills",
+  "parent": "SKILL",
+  "description": "A skill + guidance on when the skill should be loaded",
+  "purposes": [
+   "Load skills only when they are needed",
+   "Keep agent context small and focused"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "reasoning",
+  "appears_in": [
+   "reasoning"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "DECISION",
+  "name": "Decision",
+  "category": "Decision Records",
+  "parent": null,
+  "description": "A recorded choice with its context and rationale",
+  "purposes": [
+   "Capture what was decided, why, and by whom",
+   "Provide traceability for later review"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "decisions",
+  "appears_in": [
+   "direction",
+   "decisions",
+   "knowledge"
+  ],
+  "sub_types": [
+   "ADR",
+   "APPROVAL",
+   "POLICY-EXCEPTION"
+  ]
+ },
+ {
+  "id": "ADR",
+  "name": "ADR",
+  "category": "Decision Records",
+  "parent": "DECISION",
+  "description": "Architecture Decision Record",
+  "purposes": [
+   "Record architectural decisions with context, rationale, and consequences",
+   "Avoid reopening settled design questions"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "decisions",
+  "appears_in": [
+   "decisions",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ACCOUNTABLE-OWNER",
+  "name": "Accountable Owner",
+  "category": "Concordia",
+  "parent": "ROLE",
+  "description": "The single person answerable for a goal, outcome, or process",
+  "purposes": [
+   "Assign clear ownership for results",
+   "Route decisions, approvals, and escalations to one person"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "roles",
+  "appears_in": [
+   "roles",
+   "risks",
+   "governance",
+   "machine"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "GOAL",
+  "name": "Goals",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A desired result the organization intends to achieve",
+  "purposes": [
+   "Set direction for programs, projects, and machines",
+   "Measure progress against intended results"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "roles",
+   "direction",
+   "goals",
+   "execution",
+   "risks",
+   "governance",
+   "machine",
+   "decisions"
+  ],
+  "sub_types": [
+   "GOAL-SMART",
+   "GOAL-OPERATIONAL",
+   "OBJECTIVE"
+  ]
+ },
+ {
+  "id": "GOAL-SMART",
+  "name": "SMART Project Goals",
+  "category": "Concordia",
+  "parent": "GOAL",
+  "description": "A specific, measurable, time-bound goal for a project",
+  "purposes": [
+   "Define clear, testable project targets",
+   "Determine when a project has succeeded"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "GOAL-OPERATIONAL",
+  "name": "Operational Goals",
+  "category": "Concordia",
+  "parent": "GOAL",
+  "description": "An ongoing goal for running and sustaining operations",
+  "purposes": [
+   "Set targets for steady-state performance",
+   "Track ongoing operational health"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "EXEC",
+  "name": "Execution Process",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A structured effort to carry out work toward goals",
+  "purposes": [
+   "Organize work that delivers goals and outcomes",
+   "Serve as parent type for programs and projects"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "execution",
+  "appears_in": [
+   "execution"
+  ],
+  "sub_types": [
+   "PROGRAM",
+   "PROJECT"
+  ]
+ },
+ {
+  "id": "PROGRAM",
+  "name": "Programs",
+  "category": "Concordia",
+  "parent": "EXEC",
+  "description": "A coordinated group of related projects with a shared objective",
+  "purposes": [
+   "Coordinate dependencies, resources, and benefits across projects",
+   "Govern multi-project initiatives"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "execution",
+  "appears_in": [
+   "direction",
+   "execution"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PROJECT",
+  "name": "Projects",
+  "category": "Concordia",
+  "parent": "EXEC",
+  "description": "A time-bound effort with defined scope and deliverables",
+  "purposes": [
+   "Plan and track scoped work to completion",
+   "Tie deliverables and milestones to SMART goals"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "execution",
+  "appears_in": [
+   "goals",
+   "execution",
+   "risks",
+   "causal"
+  ],
+  "sub_types": [
+   "EXPERIMENT",
+   "CAMPAIGN"
+  ]
+ },
+ {
+  "id": "OUTCOME",
+  "name": "Outcome",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A result or change produced by execution",
+  "purposes": [
+   "Record what execution actually achieved",
+   "Compare actual results to goals"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "execution",
+  "appears_in": [
+   "goals",
+   "execution",
+   "machine",
+   "causal",
+   "evaluation"
+  ],
+  "sub_types": [
+   "DELIVERABLE",
+   "EVAL-RUN"
+  ]
+ },
+ {
+  "id": "DELIVERABLE",
+  "name": "Deliverable",
+  "category": "Concordia",
+  "parent": "OUTCOME",
+  "description": "A concrete output produced by a project",
+  "purposes": [
+   "Define what a project must produce",
+   "Track acceptance and completion of outputs"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "execution",
+  "appears_in": [
+   "execution",
+   "swe"
+  ],
+  "sub_types": [
+   "RELEASE"
+  ]
+ },
+ {
+  "id": "PROGRESS-INDICATOR",
+  "name": "Progress Indicator",
+  "category": "Concordia",
+  "parent": null,
+  "description": "Any measure or checkpoint used to track progress toward goals and outcomes",
+  "purposes": [
+   "Show whether execution is on track",
+   "Trigger attention or escalation when progress stalls"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals"
+  ],
+  "sub_types": [
+   "MILESTONE",
+   "METRIC",
+   "KEY-RESULT",
+   "TARGET"
+  ]
+ },
+ {
+  "id": "MILESTONE",
+  "name": "Milestone",
+  "category": "Concordia",
+  "parent": "PROGRESS-INDICATOR",
+  "description": "A key checkpoint or deadline in execution",
+  "purposes": [
+   "Mark significant points in a schedule",
+   "Confirm required progress has been reached by a date"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals",
+   "execution"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "POLICY",
+  "name": "Policies",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A mandatory rule that governs decisions and actions",
+  "purposes": [
+   "Constrain entity creation, state transitions, and agent actions",
+   "Provide the basis for controls and compliance checks"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "governance",
+  "appears_in": [
+   "schema",
+   "governance",
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PRACTICE",
+  "name": "Practices",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A recommended way of working, followed by convention",
+  "purposes": [
+   "Share proven ways of doing work",
+   "Guide behavior where no mandatory rule applies"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "governance",
+  "appears_in": [
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ESCALATION",
+  "name": "Escalations",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A request to raise an issue to a higher authority",
+  "purposes": [
+   "Route blocked or out-of-bounds issues to the right owner",
+   "Track escalated issues to resolution"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "risks",
+  "appears_in": [
+   "roles",
+   "goals",
+   "risks"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "METRIC",
+  "name": "Metrics",
+  "category": "Concordia",
+  "parent": "PROGRESS-INDICATOR",
+  "description": "A defined quantitative measure with a calculation and unit",
+  "purposes": [
+   "Measure performance against goals",
+   "Provide data for progress indicators and decisions"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals",
+   "causal"
+  ],
+  "sub_types": [
+   "KPI"
+  ]
+ },
+ {
+  "id": "MACHINE",
+  "name": "Machine",
+  "category": "Concordia",
+  "parent": null,
+  "description": "Collection of Goals, Outcomes, Accountable Owner, People, Process, and Technology",
+  "purposes": [
+   "Model a complete capability unit from goals through technology",
+   "Govern and improve how that unit delivers outcomes"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "machine",
+  "appears_in": [
+   "machine"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "STRATEGY",
+  "name": "Strategy",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A chosen approach for achieving one or more goals",
+  "purposes": [
+   "Link goals to the plans and programs that pursue them",
+   "Detect execution that serves no stated strategy"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PLAN",
+  "name": "Plan",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A time-bound arrangement of work, resources and milestones that carries out a strategy",
+  "purposes": [
+   "Turn strategy into scheduled, resourced work",
+   "Compare actual execution with the agreed plan"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction",
+   "execution",
+   "risks"
+  ],
+  "sub_types": [
+   "ROADMAP"
+  ]
+ },
+ {
+  "id": "ROADMAP",
+  "name": "Roadmap",
+  "category": "Concordia",
+  "parent": "PLAN",
+  "description": "A sequenced plan of capabilities or releases over time",
+  "purposes": [
+   "Communicate what will be delivered and when",
+   "Link customer commitments to planned dates"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "MISSION",
+  "name": "Mission",
+  "category": "Concordia",
+  "parent": null,
+  "description": "The organization's enduring purpose",
+  "purposes": [
+   "Give people and agents a common reason for their work",
+   "Test goals and strategies for fit"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "VISION",
+  "name": "Vision",
+  "category": "Concordia",
+  "parent": null,
+  "description": "The future state the organization intends to reach",
+  "purposes": [
+   "Set long-range direction for strategies",
+   "Frame multi-year goals"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PRINCIPLE",
+  "name": "Principle",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A fundamental belief that guides choices where no rule applies",
+  "purposes": [
+   "Guide judgment by people and agents",
+   "Serve as parent type for cultural and ethical principles"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction",
+   "decisions"
+  ],
+  "sub_types": [
+   "CULTURAL-PRINCIPLE",
+   "ETHICAL-PRINCIPLE"
+  ]
+ },
+ {
+  "id": "CULTURAL-PRINCIPLE",
+  "name": "Cultural Principle",
+  "category": "Concordia",
+  "parent": "PRINCIPLE",
+  "description": "A value or norm describing how people in the organization work together",
+  "purposes": [
+   "Keep agent behavior consistent with company culture",
+   "Make values explicit and testable"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ETHICAL-PRINCIPLE",
+  "name": "Ethical Principle",
+  "category": "Concordia",
+  "parent": "PRINCIPLE",
+  "description": "A standard of right conduct the organization commits to",
+  "purposes": [
+   "Bound what agents and people do even where policy permits it",
+   "Support ethics reviews of agent actions"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction",
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "OBJECTIVE",
+  "name": "Objective (OKR)",
+  "category": "Concordia",
+  "parent": "GOAL",
+  "description": "A qualitative goal paired with measurable key results",
+  "purposes": [
+   "Support OKR-based planning",
+   "Link periodic objectives to strategy"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "KEY-RESULT",
+  "name": "Key Result",
+  "category": "Concordia",
+  "parent": "PROGRESS-INDICATOR",
+  "description": "A measurable result showing progress toward an objective",
+  "purposes": [
+   "Measure objective achievement",
+   "Trigger attention when key results lag"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "KPI",
+  "name": "KPI",
+  "category": "Concordia",
+  "parent": "METRIC",
+  "description": "A metric designated as a key indicator of performance",
+  "purposes": [
+   "Focus attention on the few measures that matter",
+   "Feed dashboards and escalation thresholds"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TARGET",
+  "name": "Target",
+  "category": "Concordia",
+  "parent": "PROGRESS-INDICATOR",
+  "description": "A desired value of a metric by a date",
+  "purposes": [
+   "Make goals and KPIs testable",
+   "Detect gaps between actual and intended values"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "goals",
+  "appears_in": [
+   "goals"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "COMMITMENT",
+  "name": "Commitment",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A promise by an owner to deliver something by a date, to a customer or internally",
+  "purposes": [
+   "Track promises across handoffs",
+   "Flag commitments put at risk by plan changes"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "execution",
+  "appears_in": [
+   "direction",
+   "execution",
+   "gtm",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ASSUMPTION",
+  "name": "Assumption",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A belief that a plan or decision depends on and that has not been verified",
+  "purposes": [
+   "Make planning premises explicit",
+   "Re-test plans when an assumption is disproved"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "risks",
+  "appears_in": [
+   "risks",
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "RISK",
+  "name": "Risk",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A possible future event that would affect goals, with likelihood and impact",
+  "purposes": [
+   "Anticipate threats to goals",
+   "Assign owners and mitigations"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "risks",
+  "appears_in": [
+   "risks"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ISSUE",
+  "name": "Issue",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A current problem affecting execution that needs resolution",
+  "purposes": [
+   "Track blockers to resolution",
+   "Provide the source for escalations"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "risks",
+  "appears_in": [
+   "risks",
+   "swe"
+  ],
+  "sub_types": [
+   "INCIDENT"
+  ]
+ },
+ {
+  "id": "DEPENDENCY",
+  "name": "Dependency",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A condition where one piece of work or outcome requires another",
+  "purposes": [
+   "Expose critical paths across teams and programs",
+   "Warn downstream owners when upstream work changes"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "risks",
+  "appears_in": [
+   "risks"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CONSTRAINT",
+  "name": "Constraint",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A limit on options, such as budget, time, capacity or technical boundaries",
+  "purposes": [
+   "Bound plans and agent choices",
+   "Explain why options were excluded"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "risks",
+  "appears_in": [
+   "risks",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "BUDGET",
+  "name": "Budget",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A financial or resource allocation to a goal, program, project or unit",
+  "purposes": [
+   "Tie resources to priorities",
+   "Detect work without funding, or funding without goals"
+  ],
+  "memory_class": "Intent",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "REQUIREMENT",
+  "name": "Requirement",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A capability or condition that a deliverable must satisfy",
+  "purposes": [
+   "Link goals to what deliverables must do",
+   "Verify deliverables before acceptance"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "execution",
+  "appears_in": [
+   "execution"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ROLE",
+  "name": "Role",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A named set of responsibilities and authority that a person or agent can hold",
+  "purposes": [
+   "Separate what a position does from who holds it",
+   "Give agents bounded authority"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "roles",
+  "appears_in": [
+   "roles"
+  ],
+  "sub_types": [
+   "BOARD-MEMBER",
+   "HIRING-MANAGER",
+   "SUPERVISOR",
+   "ACCOUNTABLE-OWNER"
+  ]
+ },
+ {
+  "id": "ROLE-ASSIGNMENT",
+  "name": "Role Assignment",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A person or agent holding a role for a scope and period, such as a RACI assignment",
+  "purposes": [
+   "Record who is responsible, accountable, consulted and informed",
+   "Keep accountability current as people change"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "roles",
+  "appears_in": [
+   "roles"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "DECISION-RIGHT",
+  "name": "Decision Right",
+  "category": "Concordia",
+  "parent": null,
+  "description": "Authority to make or approve a class of decisions, up to stated limits",
+  "purposes": [
+   "Route decisions to whoever is authorized",
+   "Enforce limits such as discount authority"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "roles",
+  "appears_in": [
+   "roles",
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "APPROVAL",
+  "name": "Approval",
+  "category": "Decision Records",
+  "parent": "DECISION",
+  "description": "A decision authorizing an action, change or state transition",
+  "purposes": [
+   "Record who authorized what under which decision right",
+   "Gate state transitions"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "decisions",
+  "appears_in": [
+   "schema",
+   "roles",
+   "processes",
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "POLICY-EXCEPTION",
+  "name": "Policy Exception",
+  "category": "Decision Records",
+  "parent": "DECISION",
+  "description": "An approved, time-limited departure from a policy",
+  "purposes": [
+   "Allow justified exceptions without changing the policy",
+   "Expire and review exceptions"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "decisions",
+  "appears_in": [
+   "governance",
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CONTROL",
+  "name": "Control",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A mechanism that enforces or verifies compliance with a policy",
+  "purposes": [
+   "Link policies to how they are enforced",
+   "Support audits and compliance checks"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "governance",
+  "appears_in": [
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "OBLIGATION",
+  "name": "Obligation",
+  "category": "Concordia",
+  "parent": null,
+  "description": "An external requirement from law, regulation, standard or contract",
+  "purposes": [
+   "Trace policies to their legal or contractual source",
+   "Show impact when requirements change"
+  ],
+  "memory_class": "Normative",
+  "tier": "Core",
+  "home_section": "governance",
+  "appears_in": [
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ALIGNMENT-FINDING",
+  "name": "Alignment Finding",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A detected inconsistency between an action, plan or decision and the goals, policies or principles it should serve",
+  "purposes": [
+   "Surface misalignment to the accountable owner",
+   "Track it to resolution"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "governance",
+  "appears_in": [
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "REVIEW",
+  "name": "Review",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A scheduled assessment of progress, outcomes or alignment, such as a quarterly business review or retrospective",
+  "purposes": [
+   "Create regular checkpoints for realignment",
+   "Produce decisions, lessons and actions"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "governance",
+  "appears_in": [
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "ACTION-ITEM",
+  "name": "Action Item",
+  "category": "Concordia",
+  "parent": null,
+  "description": "A specific task assigned to an owner with a due date",
+  "purposes": [
+   "Track follow-through from meetings, reviews and escalations",
+   "Close the loop on decisions"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "risks",
+  "appears_in": [
+   "risks",
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "LESSON",
+  "name": "Lesson Learned",
+  "category": "Muninn Knowledge",
+  "parent": null,
+  "description": "An insight gained from experience, with the context in which it applies",
+  "purposes": [
+   "Avoid repeating mistakes",
+   "Spread what worked across people and agents"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge",
+   "causal",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "FACT",
+  "name": "Fact",
+  "category": "Muninn Knowledge",
+  "parent": null,
+  "description": "A statement believed true for a stated period, with its source and confidence",
+  "purposes": [
+   "Hold atomic, verifiable knowledge",
+   "Support conflict and staleness checks"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge",
+   "evaluation"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PREFERENCE",
+  "name": "Preference",
+  "category": "Muninn Knowledge",
+  "parent": null,
+  "description": "A stated choice or liking of a person, team or customer",
+  "purposes": [
+   "Personalize agent behavior",
+   "Respect stakeholder choices"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "HANDOFF",
+  "name": "Handoff",
+  "category": "Muninn Knowledge",
+  "parent": null,
+  "description": "A transfer of work and context from one owner, stage or agent to another",
+  "purposes": [
+   "Prevent loss of context between stages",
+   "Flag missing items at each boundary"
+  ],
+  "memory_class": "Working",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "processes",
+   "knowledge"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "OPEN-QUESTION",
+  "name": "Open Question",
+  "category": "Muninn Knowledge",
+  "parent": null,
+  "description": "A known unknown that someone needs answered",
+  "purposes": [
+   "Make knowledge gaps explicit",
+   "Route questions to people who can answer them"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "EPISODE",
+  "name": "Episode",
+  "category": "Muninn Knowledge",
+  "parent": null,
+  "description": "A recorded interaction or session, such as an agent transcript or meeting record",
+  "purposes": [
+   "Serve as evidence for extracted knowledge",
+   "Trace knowledge back to its source"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "DOCUMENT",
+  "name": "Document",
+  "category": "Muninn Knowledge",
+  "parent": null,
+  "description": "A unit of authored content, such as a report, policy document or presentation",
+  "purposes": [
+   "Store or reference source material",
+   "Cite where knowledge came from"
+  ],
+  "memory_class": "Reference",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge",
+   "gtm"
+  ],
+  "sub_types": [
+   "CONTRACT"
+  ]
+ },
+ {
+  "id": "EXTERNAL-REFERENCE",
+  "name": "External Reference",
+  "category": "Data-Access",
+  "parent": null,
+  "description": "A pointer to an object held in an authoritative external system, with a cached snapshot and freshness rule",
+  "purposes": [
+   "Reference systems of record instead of copying them",
+   "Keep knowledge in step with the source"
+  ],
+  "memory_class": "Reference",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TERM",
+  "name": "Glossary Term",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "A word, phrase or acronym with its definition in the organization's language",
+  "purposes": [
+   "Give agents the company vocabulary",
+   "Resolve ambiguous names and acronyms"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "knowledge"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TIME-PERIOD",
+  "name": "Time Period",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "A named period, such as a fiscal quarter or planning cycle",
+  "purposes": [
+   "Align goals, budgets and metrics on shared calendars",
+   "Compare results period over period"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "direction",
+  "appears_in": [
+   "direction"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "EVENT",
+  "name": "Event",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "Something that happened at a point in time relevant to the organization",
+  "purposes": [
+   "Anchor causes, outcomes and timelines",
+   "Trigger processes and reviews"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "processes",
+   "knowledge"
+  ],
+  "sub_types": [
+   "MEETING"
+  ]
+ },
+ {
+  "id": "MEETING",
+  "name": "Meeting",
+  "category": "Abstract Knowledge",
+  "parent": "EVENT",
+  "description": "A gathering of people, and possibly agents, that produces decisions and actions",
+  "purposes": [
+   "Capture decisions and action items at their source",
+   "Link attendees to outcomes"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "knowledge",
+  "appears_in": [
+   "decisions",
+   "knowledge"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "LOCATION",
+  "name": "Location",
+  "category": "Abstract Knowledge",
+  "parent": null,
+  "description": "A physical place or legal jurisdiction",
+  "purposes": [
+   "Apply jurisdiction-specific obligations",
+   "Support data residency and office-level reporting"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "governance",
+  "appears_in": [
+   "governance"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CONTACT",
+  "name": "Contact",
+  "category": "Abstract Knowledge",
+  "parent": "PERSON",
+  "description": "A person at an external organization the company deals with",
+  "purposes": [
+   "Link people to accounts, partners and vendors",
+   "Track stakeholder roles in deals"
+  ],
+  "memory_class": "Reference",
+  "tier": "Core",
+  "home_section": "people",
+  "appears_in": [
+   "people",
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "SYSTEM",
+  "name": "System",
+  "category": "Technology",
+  "parent": null,
+  "description": "A software application, platform or service the organization uses",
+  "purposes": [
+   "Represent the Technology part of a Machine",
+   "Track which systems support which processes"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "agents",
+  "appears_in": [
+   "machine",
+   "processes",
+   "agents",
+   "knowledge",
+   "evaluation",
+   "swe"
+  ],
+  "sub_types": [
+   "HARNESS",
+   "AI-MODEL",
+   "AGENT-TOOL",
+   "REPOSITORY",
+   "SOFTWARE-COMPONENT"
+  ]
+ },
+ {
+  "id": "DATASET",
+  "name": "Dataset",
+  "category": "Technology",
+  "parent": null,
+  "description": "A defined collection of data with an owner and schema",
+  "purposes": [
+   "Identify the data behind metrics and models",
+   "Track data ownership and lineage"
+  ],
+  "memory_class": "Reference",
+  "tier": "Core",
+  "home_section": "causal",
+  "appears_in": [
+   "goals",
+   "causal"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "AI-AGENT",
+  "name": "AI Agent",
+  "category": "Agents",
+  "parent": null,
+  "description": "An AI system that acts for a person or organization, defined by instructions, tools and a model",
+  "purposes": [
+   "Treat agents as accountable actors distinct from people",
+   "Assign sponsors, roles and entitlements to agents"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "agents",
+  "appears_in": [
+   "roles",
+   "governance",
+   "processes",
+   "reasoning",
+   "agents",
+   "knowledge",
+   "evaluation"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "AGENTIC-WORKFLOW",
+  "name": "Agentic Workflow",
+  "category": "Agents",
+  "parent": "PROCESS",
+  "description": "A process carried out wholly or partly by AI agents",
+  "purposes": [
+   "Describe multi-agent work as a reusable unit",
+   "Migrate workflows across systems"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Core",
+  "home_section": "agents",
+  "appears_in": [
+   "processes",
+   "agents",
+   "evaluation"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "HARNESS",
+  "name": "Agent Harness",
+  "category": "Agents",
+  "parent": "SYSTEM",
+  "description": "A runtime that hosts and runs agents, such as a coding assistant or agent framework",
+  "purposes": [
+   "Track where agents run",
+   "Choose delivery profiles and plan migrations"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "agents",
+  "appears_in": [
+   "agents"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "AI-MODEL",
+  "name": "AI Model",
+  "category": "Agents",
+  "parent": "SYSTEM",
+  "description": "A specific AI model and version used by agents",
+  "purposes": [
+   "Record which model produced which output",
+   "Re-evaluate when models change"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "agents",
+  "appears_in": [
+   "agents",
+   "evaluation"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "AGENT-TOOL",
+  "name": "Agent Tool",
+  "category": "Agents",
+  "parent": "SYSTEM",
+  "description": "A capability an agent can call, such as an MCP server or API",
+  "purposes": [
+   "Govern which tools agents may use",
+   "Trace actions to the tools that performed them"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "agents",
+  "appears_in": [
+   "agents"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PRODUCT",
+  "name": "Product",
+  "category": "Commercial",
+  "parent": null,
+  "description": "A product or service the organization offers",
+  "purposes": [
+   "Anchor positioning, pricing, roadmap and support knowledge",
+   "Link customers to what they bought"
+  ],
+  "memory_class": "Factual",
+  "tier": "Core",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": [
+   "OFFERING"
+  ]
+ },
+ {
+  "id": "CONTRACT",
+  "name": "Contract",
+  "category": "Commercial",
+  "parent": "DOCUMENT",
+  "description": "A legally binding agreement with a customer, vendor, partner or employee",
+  "purposes": [
+   "Hold terms, obligations and commitments",
+   "Trigger renewals and compliance checks"
+  ],
+  "memory_class": "Reference",
+  "tier": "Core",
+  "home_section": "gtm",
+  "appears_in": [
+   "governance",
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TEST-SUITE",
+  "name": "Test Suite",
+  "category": "Evaluation",
+  "parent": null,
+  "description": "A versioned set of test cases for an agent, workflow or system",
+  "purposes": [
+   "Group the tests that define acceptable behavior",
+   "Run regressions on every change"
+  ],
+  "memory_class": "Normative",
+  "tier": "Product: Chiron",
+  "home_section": "evaluation",
+  "appears_in": [
+   "evaluation"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "TEST-CASE",
+  "name": "Test Case",
+  "category": "Evaluation",
+  "parent": null,
+  "description": "An input with expected behavior and grading criteria",
+  "purposes": [
+   "Define one checkable expectation",
+   "Detect regressions precisely"
+  ],
+  "memory_class": "Normative",
+  "tier": "Product: Chiron",
+  "home_section": "evaluation",
+  "appears_in": [
+   "evaluation"
+  ],
+  "sub_types": [
+   "COMPETENCY-QUESTION"
+  ]
+ },
+ {
+  "id": "COMPETENCY-QUESTION",
+  "name": "Competency Question",
+  "category": "Evaluation",
+  "parent": "TEST-CASE",
+  "description": "A question the knowledge base must be able to answer, with its expected answer",
+  "purposes": [
+   "Measure knowledge coverage",
+   "Detect gaps and retrieval regressions"
+  ],
+  "memory_class": "Normative",
+  "tier": "Product: Chiron",
+  "home_section": "evaluation",
+  "appears_in": [
+   "evaluation"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "EVAL-RUN",
+  "name": "Evaluation Run",
+  "category": "Evaluation",
+  "parent": "OUTCOME",
+  "description": "One execution of a test suite against a specific system version, with results",
+  "purposes": [
+   "Compare versions on evidence",
+   "Record when a change broke something"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Product: Chiron",
+  "home_section": "evaluation",
+  "appears_in": [
+   "evaluation"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "FACTOR",
+  "name": "Factor",
+  "category": "Model",
+  "parent": null,
+  "description": "A variable in a causal or predictive model",
+  "purposes": [
+   "Name the drivers a model reasons about",
+   "Link model variables to metrics and data"
+  ],
+  "memory_class": "Factual",
+  "tier": "Product: Delos",
+  "home_section": "causal",
+  "appears_in": [
+   "causal"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "HYPOTHESIS",
+  "name": "Hypothesis",
+  "category": "Model",
+  "parent": null,
+  "description": "A testable proposed explanation of an outcome",
+  "purposes": [
+   "Make explanations explicit before testing",
+   "Track which explanations held"
+  ],
+  "memory_class": "Factual",
+  "tier": "Product: Delos",
+  "home_section": "causal",
+  "appears_in": [
+   "causal"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "EXPERIMENT",
+  "name": "Experiment",
+  "category": "Model",
+  "parent": "PROJECT",
+  "description": "A controlled test of a hypothesis",
+  "purposes": [
+   "Test changes before rolling them out",
+   "Record evidence for causal models"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Product: Delos",
+  "home_section": "causal",
+  "appears_in": [
+   "execution",
+   "causal"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "BOTTLENECK",
+  "name": "Bottleneck",
+  "category": "Model",
+  "parent": null,
+  "description": "A constraint on throughput or results identified by analysis",
+  "purposes": [
+   "Show where value is held back",
+   "Prioritize improvements"
+  ],
+  "memory_class": "Factual",
+  "tier": "Product: Delos",
+  "home_section": "causal",
+  "appears_in": [
+   "causal"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "RECOMMENDATION",
+  "name": "Recommendation",
+  "category": "Huginn",
+  "parent": null,
+  "description": "A proposed course of action with its reasoning, options considered and confidence",
+  "purposes": [
+   "Present decisions with visible reasoning",
+   "Track whether recommendations were followed and how they turned out"
+  ],
+  "memory_class": "Normative",
+  "tier": "Product: Huginn",
+  "home_section": "decisions",
+  "appears_in": [
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "OPTION",
+  "name": "Option",
+  "category": "Huginn",
+  "parent": null,
+  "description": "An alternative considered for a decision",
+  "purposes": [
+   "Record what was weighed, not only what was chosen",
+   "Avoid reopening rejected options"
+  ],
+  "memory_class": "Normative",
+  "tier": "Product: Huginn",
+  "home_section": "decisions",
+  "appears_in": [
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CRITERION",
+  "name": "Decision Criterion",
+  "category": "Huginn",
+  "parent": null,
+  "description": "A factor used to compare options, with its weight",
+  "purposes": [
+   "Make trade-offs explicit and repeatable",
+   "Align decisions with goals and principles"
+  ],
+  "memory_class": "Normative",
+  "tier": "Product: Huginn",
+  "home_section": "decisions",
+  "appears_in": [
+   "decisions"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "OFFERING",
+  "name": "Offering",
+  "category": "Commercial",
+  "parent": "PRODUCT",
+  "description": "A packaged, priced configuration of products and services",
+  "purposes": [
+   "Model packages and bundles",
+   "Link price points to what customers buy"
+  ],
+  "memory_class": "Factual",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "MARKET-SEGMENT",
+  "name": "Market Segment",
+  "category": "Commercial",
+  "parent": null,
+  "description": "A group of potential customers with shared characteristics",
+  "purposes": [
+   "Target marketing and sales",
+   "Define ideal customer profiles per segment"
+  ],
+  "memory_class": "Factual",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "PERSONA",
+  "name": "Buyer Persona",
+  "category": "Commercial",
+  "parent": null,
+  "description": "A representative profile of a buyer or user role",
+  "purposes": [
+   "Tailor messaging and product decisions to real roles"
+  ],
+  "memory_class": "Factual",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "COMPETITOR",
+  "name": "Competitor",
+  "category": "Abstract Knowledge",
+  "parent": "COMPANY",
+  "description": "A company competing for the same customers",
+  "purposes": [
+   "Hold competitive positioning and win/loss knowledge"
+  ],
+  "memory_class": "Factual",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "people",
+  "appears_in": [
+   "people",
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "POSITIONING",
+  "name": "Positioning Statement",
+  "category": "Commercial",
+  "parent": null,
+  "description": "The approved statement of how an offering is differentiated for a segment",
+  "purposes": [
+   "Keep generated content on message",
+   "Govern competitive claims"
+  ],
+  "memory_class": "Normative",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "CAMPAIGN",
+  "name": "Campaign",
+  "category": "Commercial",
+  "parent": "PROJECT",
+  "description": "A coordinated marketing effort with a goal and channels",
+  "purposes": [
+   "Link leads to their sources",
+   "Capture campaign lessons"
+  ],
+  "memory_class": "Intent",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "execution",
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "LEAD",
+  "name": "Lead",
+  "category": "Commercial",
+  "parent": null,
+  "description": "A person or organization that has shown interest but is not yet qualified",
+  "purposes": [
+   "Track lead generation and qualification"
+  ],
+  "memory_class": "Reference",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "OPPORTUNITY",
+  "name": "Opportunity",
+  "category": "Commercial",
+  "parent": null,
+  "description": "A potential sale to an account, with stage and value",
+  "purposes": [
+   "Track pipeline execution",
+   "Link deal commitments to accounts"
+  ],
+  "memory_class": "Reference",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "SUPPORT-CASE",
+  "name": "Support Case",
+  "category": "Commercial",
+  "parent": null,
+  "description": "A customer request or problem handled by support",
+  "purposes": [
+   "Link problems to fixes and known issues",
+   "Feed product and positioning feedback"
+  ],
+  "memory_class": "Reference",
+  "tier": "Domain pack: go-to-market",
+  "home_section": "gtm",
+  "appears_in": [
+   "gtm"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "REPOSITORY",
+  "name": "Code Repository",
+  "category": "Technology",
+  "parent": "SYSTEM",
+  "description": "A version-controlled store of source code",
+  "purposes": [
+   "Anchor engineering knowledge to code",
+   "Provide supersession evidence from history"
+  ],
+  "memory_class": "Reference",
+  "tier": "Domain pack: software engineering",
+  "home_section": "swe",
+  "appears_in": [
+   "agents",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "SOFTWARE-COMPONENT",
+  "name": "Software Component",
+  "category": "Technology",
+  "parent": "SYSTEM",
+  "description": "A deployable service, module or library",
+  "purposes": [
+   "Attach constraints, decisions and owners to the code they govern"
+  ],
+  "memory_class": "Factual",
+  "tier": "Domain pack: software engineering",
+  "home_section": "swe",
+  "appears_in": [
+   "agents",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "RELEASE",
+  "name": "Release",
+  "category": "Technology",
+  "parent": "DELIVERABLE",
+  "description": "A versioned delivery of software",
+  "purposes": [
+   "Link roadmap items, fixes and customer commitments to what shipped"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Domain pack: software engineering",
+  "home_section": "swe",
+  "appears_in": [
+   "execution",
+   "swe"
+  ],
+  "sub_types": []
+ },
+ {
+  "id": "INCIDENT",
+  "name": "Incident",
+  "category": "Technology",
+  "parent": "ISSUE",
+  "description": "An unplanned disruption to a service",
+  "purposes": [
+   "Capture causes, fixes and lessons",
+   "Feed causal analysis"
+  ],
+  "memory_class": "Experiential",
+  "tier": "Domain pack: software engineering",
+  "home_section": "swe",
+  "appears_in": [
+   "risks",
+   "causal",
+   "swe"
+  ],
+  "sub_types": []
+ }
+]
